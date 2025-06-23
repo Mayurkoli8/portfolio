@@ -56,8 +56,7 @@ This project is deployed using GitHub Pages. To redeploy:
 
 ```bash
 https://mayurkoli8.github.io/portfolio
-
-
+```
 
 ## 📇 Contact
 Feel free to connect with me for collaborations or questions:
