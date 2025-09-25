@@ -33,10 +33,6 @@
                 margin-bottom: 5px;
                 position: relative;
                 display: block;
-                -webkit-user-select: none; /* Safari */
-        -moz-user-select: none;    /* Firefox */
-        -ms-user-select: none;     /* IE 10+ */
-        user-select: none;         /* Standard syntax */
             }
 
             .down {
@@ -44,10 +40,6 @@
                 margin-bottom: 0;
                 position: relative;
                 display: block;
-                -webkit-user-select: none; /* Safari */
-        -moz-user-select: none;    /* Firefox */
-        -ms-user-select: none;     /* IE 10+ */
-        user-select: none;         /* Standard syntax */
             }
         }
 
