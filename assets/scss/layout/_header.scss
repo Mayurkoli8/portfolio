@@ -25,7 +25,7 @@
         max-width: 550px;
         
         .header-title {
-            
+        
             .up {
                 font-size: calc(30px + (60 - 30) * ((100vw - 300px) / (1300 - 300)));
                 font-weight: 500;
@@ -33,6 +33,10 @@
                 margin-bottom: 5px;
                 position: relative;
                 display: block;
+                -webkit-user-select: none; /* Safari */
+        -moz-user-select: none;    /* Firefox */
+        -ms-user-select: none;     /* IE 10+ */
+        user-select: none;         /* Standard syntax */
             }
 
             .down {
@@ -40,6 +44,10 @@
                 margin-bottom: 0;
                 position: relative;
                 display: block;
+                -webkit-user-select: none; /* Safari */
+        -moz-user-select: none;    /* Firefox */
+        -ms-user-select: none;     /* IE 10+ */
+        user-select: none;         /* Standard syntax */
             }
         }
 
