@@ -2,7 +2,7 @@
 
 Welcome to the official repository for my personal portfolio website, built to showcase my projects, skills, resume, and contact information.
 
-🔗 **Live Website**: [https://mayurkoli8.github.io/portfolio](https://mayurkoli8.github.io/portfolio)
+🔗 **Live Website**: [https://mayurkoli8.github.io/portfolio](https://mayurkoli.mentesa.live)
 
 ---
 
