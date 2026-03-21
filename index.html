@@ -290,9 +290,9 @@
     e.preventDefault();
 
     const data = {
-      name: getValue(form, ["name", "full_name", "first_name"]),
+      name: getValue(form, ["name", "full_name", "first_name", "first name"]),
+      phone: getValue(form, ["phone", "mobile", "contact", "phone no."]),
       email: getValue(form, ["email"]),
-      phone: getValue(form, ["phone", "mobile", "contact"]),
       message: getValue(form, ["message", "enquiry"]),
       source: "website_form",
       form_type: form.dataset.formType || "unknown",
