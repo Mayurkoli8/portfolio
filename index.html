@@ -214,7 +214,7 @@
             <p class="section-subtitle">How can you communicate?</p>
             <h6 class="section-title mb-5">Contact Me</h6>
             <!-- contact form -->
-            <form action="https://formspree.io/f/xdoqqnog" method="post" class="contact-form col-md-10 col-lg-8 m-auto">
+            <form action="https://formspree.io/f/xdoqqnog" method="post" class="contact-form col-md-10 col-lg-8 m-auto" data-ghl data-form-type="brochure"></form>
                 <div class="form-row">
                     <div class="form-group col-sm-6">
                         <input name="first name" type="text" size="50" class="form-control" placeholder="First Name"
@@ -238,6 +238,7 @@
                         <input type="submit" value="Send Message" class="btn btn-outline-primary rounded">
                     </div>
                 </div>
+                
             </form><!-- end of contact form -->
         </div><!-- end of container -->
     </section><!-- end of contact section -->
@@ -269,6 +270,52 @@
     <script src="assets/js/meyawo.js"></script>
     <script src="https://mentesav7.onrender.com/static/embed.js"
         data-api-key="mentesa_sk_wlO9HfRgE_YB8X6paBSYxg2Ioi5K9QGrVQfWqcZyL9g" data-bot-name="Mayur"></script>
+        <script>
+(function () {
+  const WEBHOOK_URL = "https://services.leadconnectorhq.com/hooks/zZxzwRFvP6VreDqhxd7E/webhook-trigger/8260406d-d900-44f1-8dec-9f513c7fba03";
+
+  function getValue(form, keys) {
+    for (let key of keys) {
+      let el = form.querySelector(`[name="${key}"]`);
+      if (el) return el.value;
+    }
+    return "";
+  }
+
+  document.addEventListener("submit", async function (e) {
+    const form = e.target;
+
+    if (!form.matches("form[data-ghl]")) return;
+
+    e.preventDefault();
+
+    const data = {
+      name: getValue(form, ["name", "full_name", "first_name"]),
+      email: getValue(form, ["email"]),
+      phone: getValue(form, ["phone", "mobile", "contact"]),
+      message: getValue(form, ["message", "enquiry"]),
+      source: "website_form",
+      form_type: form.dataset.formType || "unknown",
+      project_name: form.dataset.project || "",
+      page_url: window.location.href
+    };
+
+    try {
+      await fetch(WEBHOOK_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+      });
+    } catch (err) {
+      console.error("Webhook error:", err);
+    }
+
+    form.submit(); // continue original form behavior
+  });
+})();
+</script>
 </body>
 
 </html>
