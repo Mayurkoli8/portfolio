@@ -273,18 +273,30 @@
 
         <script>
 document.addEventListener("DOMContentLoaded", function () {
-  const form = document.querySelector("#contactForm");
+  const form = document.querySelector("form");
 
-  form.addEventListener("submit", async (e) => {
+  if (!form) {
+    console.error("Form not found");
+    return;
+  }
+
+  form.addEventListener("submit", async function (e) {
     e.preventDefault();
 
+    const getVal = (selector) => {
+      const el = document.querySelector(selector);
+      return el ? el.value : "";
+    };
+
     const data = {
-      name: document.querySelector("#first_name").value + " " + document.querySelector("#last_name").value,
-      phone: document.querySelector("#phone").value,
-      email: document.querySelector("#email").value,
-      message: document.querySelector("#message").value,
+      name: getVal('[name="first name"]') + " " + getVal('[name="last name"]'),
+      email: getVal('[name="email"]'),
+      phone: getVal('[name="phone no."]'),
+      message: getVal('[name="message"]'),
       form_type: "enquiry"
     };
+
+    console.log("DATA:", data);
 
     try {
       await fetch("https://n8n.thesparksocial.in/webhook/4bb57e3a-5fea-4032-82c2-3135616b88f7", {
@@ -297,9 +309,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
       alert("Form submitted!");
       form.reset();
+
     } catch (err) {
-      console.error(err);
-      alert("Something went wrong");
+      console.error("ERROR:", err);
+      alert("Error submitting form");
     }
   });
 });
