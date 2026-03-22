@@ -272,26 +272,36 @@
         data-api-key="mentesa_sk_wlO9HfRgE_YB8X6paBSYxg2Ioi5K9QGrVQfWqcZyL9g" data-bot-name="Mayur"></script>
 
         <script>
-        document.querySelector("form").addEventListener("submit", async (e) => {
-  e.preventDefault();
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.querySelector("#contactForm");
 
-  const data = {
-    name: document.querySelector("#name").value,
-    phone: document.querySelector("#phone").value,
-    email: document.querySelector("#email").value,
-    message: document.querySelector("#message").value,
-    form_type: "enquiry" // change dynamically if needed
-  };
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-  await fetch("https://n8n.thesparksocial.in/webhook/4bb57e3a-5fea-4032-82c2-3135616b88f7", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(data)
+    const data = {
+      name: document.querySelector("#first_name").value + " " + document.querySelector("#last_name").value,
+      phone: document.querySelector("#phone").value,
+      email: document.querySelector("#email").value,
+      message: document.querySelector("#message").value,
+      form_type: "enquiry"
+    };
+
+    try {
+      await fetch("https://n8n.thesparksocial.in/webhook/4bb57e3a-5fea-4032-82c2-3135616b88f7", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+      });
+
+      alert("Form submitted!");
+      form.reset();
+    } catch (err) {
+      console.error(err);
+      alert("Something went wrong");
+    }
   });
-
-  alert("Form submitted!");
 });
 </script>
 
