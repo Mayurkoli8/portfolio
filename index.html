@@ -270,6 +270,32 @@
     <script src="assets/js/meyawo.js"></script>
     <script src="https://mentesav7.onrender.com/static/embed.js"
         data-api-key="mentesa_sk_wlO9HfRgE_YB8X6paBSYxg2Ioi5K9QGrVQfWqcZyL9g" data-bot-name="Mayur"></script>
-</body>
+
+        <script>
+        document.querySelector("form").addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const data = {
+    name: document.querySelector("#name").value,
+    phone: document.querySelector("#phone").value,
+    email: document.querySelector("#email").value,
+    message: document.querySelector("#message").value,
+    form_type: "enquiry" // change dynamically if needed
+  };
+
+  await fetch("https://n8n.thesparksocial.in/webhook/4bb57e3a-5fea-4032-82c2-3135616b88f7", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(data)
+  });
+
+  alert("Form submitted!");
+});
+</script>
+
+    </body>
+
 
 </html>
