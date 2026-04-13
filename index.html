@@ -275,6 +275,19 @@
   src="https://link.thesparksocial.in/js/external-tracking.js"
   data-tracking-id="tk_e568e2a5deab4d50ae4e0d6ee22ab048">
 </script>
+<script>
+(function () {
+  const params = new URLSearchParams(window.location.search);
+
+  const utm_source = params.get('utm_source');
+  const utm_medium = params.get('utm_medium');
+  const utm_campaign = params.get('utm_campaign');
+
+  if (utm_source) localStorage.setItem('utm_source', utm_source);
+  if (utm_medium) localStorage.setItem('utm_medium', utm_medium);
+  if (utm_campaign) localStorage.setItem('utm_campaign', utm_campaign);
+})();
+</script>
     </body>
 
 
