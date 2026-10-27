@@ -131,6 +131,10 @@
               <dd>Software Developer / AI Engineer (Tech Lead), SparkOS<small>Since Feb 2026</small></dd>
             </div>
             <div>
+              <dt class="mono">Consulting</dt>
+              <dd>Technology Consultant, SEED U<small>AI for farmers · since Sep 2026</small></dd>
+            </div>
+            <div>
               <dt class="mono">Focus</dt>
               <dd>n8n automation, RAG, FastAPI, Next.js</dd>
             </div>
@@ -174,7 +178,7 @@
         <p class="section-label mono"><span class="num">01</span><span>Selected work</span></p>
         <div>
           <h2 class="section-title" id="work-title">Things I've built and <em>put in front of users.</em></h2>
-          <p class="section-intro">Three products I designed, built and deployed myself, plus a website for a client in Lesotho.</p>
+          <p class="section-intro">Three products I've built and shipped, plus a website for a client in Lesotho.</p>
         </div>
       </div>
 
@@ -206,43 +210,25 @@
         </article>
 
         <article class="project reveal" aria-labelledby="p-mentesa">
-          <div class="project-media">
+          <a class="project-media" href="https://mentesa.mayurkoli.me/" tabindex="-1" aria-hidden="true">
             <div class="frame">
-              <div class="frame-bar"><span class="frame-dots"><i></i><i></i><i></i></span><span class="frame-url mono">mentesa · retrieval pipeline</span></div>
-              <figure class="pipeline">
-                <figcaption class="visually-hidden">How Mentesa answers a question: documents are chunked, embedded and stored in a FAISS index; a user's question retrieves the closest chunks plus conversation memory, and the Gemini API writes the reply.</figcaption>
-                <div>
-                  <span class="lane-label mono">Ingest</span>
-                  <ol class="steps">
-                    <li><b>Documents</b><span>uploaded per bot</span></li>
-                    <li><b>Chunk + embed</b><span>text to vectors</span></li>
-                    <li class="is-key"><b>FAISS index</b><span>vector store</span></li>
-                  </ol>
-                </div>
-                <div>
-                  <span class="lane-label mono">Answer</span>
-                  <ol class="steps">
-                    <li><b>Question</b><span>from the widget</span></li>
-                    <li class="is-key"><b>Retrieve</b><span>top chunks + memory</span></li>
-                    <li><b>Gemini API</b><span>persona prompt</span></li>
-                    <li><b>Reply</b><span>back to the site</span></li>
-                  </ol>
-                </div>
-                <p class="pipeline-note mono">FastAPI backend · unit-tested retrieval and memory</p>
-              </figure>
+              <div class="frame-bar"><span class="frame-dots"><i></i><i></i><i></i></span><span class="frame-url mono">mentesa.mayurkoli.me</span></div>
+              <img src="/assets/imgs/work/mentesa.jpg" width="1280" height="800" loading="lazy" decoding="async"
+                   alt="Mentesa's landing page, headlined 'Build a custom AI chatbot without writing code', with Start Building Free and See how it works buttons.">
             </div>
-          </div>
+          </a>
           <div class="project-body">
             <p class="project-meta mono"><span class="num">02</span><span>Generative AI platform</span><span class="flag">Published research</span></p>
             <h3 class="project-title" id="p-mentesa">Mentesa</h3>
             <p class="project-tagline">A no-code platform for building multi-bot LLM agents.</p>
-            <p class="project-desc">Businesses create bots with persistent memory that answer from their own documents, then embed them on a website without writing code. The research behind it was published in IJSREM in 2025. The chat assistant in the corner of this page is a Mentesa bot.</p>
+            <p class="project-desc">Businesses create bots with persistent memory that answer from their own website and documents, then embed them anywhere with one line of code. I founded it and lead development on a three-person team. The research behind it was published in IJSREM in 2025, and the chat assistant in the corner of this page is a Mentesa bot.</p>
             <ul class="ticks">
               <li>Backend retrieval pipeline in Python, FastAPI and FAISS, with unit tests on the core retrieval and memory components.</li>
               <li>Multi-bot admin dashboard in Streamlit, iterated on from user feedback.</li>
             </ul>
             <p class="stack-line mono">Python · FastAPI · LangChain · FAISS · Gemini API · Firebase · Streamlit</p>
             <p class="project-links">
+              <a class="link-arrow" href="https://mentesa.mayurkoli.me/">mentesa.mayurkoli.me <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
               <a class="link-arrow" href="https://github.com/Mayurkoli8/Mentesa">Source on GitHub <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
             </p>
           </div>
@@ -303,7 +289,7 @@
       <div class="section-head reveal">
         <p class="section-label mono"><span class="num">02</span><span>Experience</span></p>
         <div>
-          <h2 class="section-title" id="experience-title">Three teams, from intern to <em>tech lead.</em></h2>
+          <h2 class="section-title" id="experience-title">Four roles, from intern to <em>tech lead.</em></h2>
           <p class="section-intro">Agile teams, two-week sprints, and code that has to keep working after it ships.</p>
         </div>
       </div>
@@ -323,6 +309,24 @@
               <li>Deploy through git-based pipelines to Linux-hosted production servers and monitor stability after each release.</li>
               <li>Work directly with stakeholders to turn business requirements into working automation logic.</li>
             </ul>
+          </div>
+        </li>
+        <li class="job reveal">
+          <p class="job-when mono"><span class="is-now">Sep 2026 – Present</span></p>
+          <div>
+            <div class="job-head">
+              <h3 class="job-role">Technology Consultant</h3>
+              <span class="job-org"><a href="https://www.seedu.io/">SEED U</a></span>
+            </div>
+            <p class="job-summary">Developing and implementing AI-powered solutions that make agricultural knowledge more accessible to farmers.</p>
+            <ul class="ticks">
+              <li>Developed and integrated AI chatbot solutions using Python and Ollama.</li>
+              <li>Integrated the conversational AI with Telegram for an interactive chat experience.</li>
+              <li>Evaluated agricultural speech datasets for compatibility with the AI pipeline.</li>
+              <li>Deployed and tested the AI solutions in the client's environment.</li>
+              <li>Contributed to the technical architecture, solution design, integration and end-to-end implementation.</li>
+            </ul>
+            <p class="stack-line mono">Python · Ollama · LLMs · Telegram Bot API · AI integration</p>
           </div>
         </li>
         <li class="job reveal">
@@ -416,11 +420,11 @@
         </div>
         <div>
           <dt class="mono">AI &amp; data</dt>
-          <dd><span class="chip">LangChain</span><span class="chip">FAISS</span><span class="chip">Gemini API</span><span class="chip">Prompt engineering</span><span class="chip">MySQL</span><span class="chip">Streamlit</span></dd>
+          <dd><span class="chip">LangChain</span><span class="chip">FAISS</span><span class="chip">Ollama</span><span class="chip">Gemini API</span><span class="chip">Prompt engineering</span><span class="chip">MySQL</span><span class="chip">Streamlit</span></dd>
         </div>
         <div>
           <dt class="mono">Automation</dt>
-          <dd><span class="chip">n8n</span><span class="chip">GoHighLevel CRM</span><span class="chip">WhatsApp integrations</span><span class="chip">Webhooks</span></dd>
+          <dd><span class="chip">n8n</span><span class="chip">GoHighLevel CRM</span><span class="chip">WhatsApp integrations</span><span class="chip">Telegram Bot API</span><span class="chip">Webhooks</span></dd>
         </div>
         <div>
           <dt class="mono">Cloud &amp; DevOps</dt>
