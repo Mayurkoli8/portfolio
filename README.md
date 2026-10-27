@@ -1,72 +1,47 @@
-# 💼 Mayur Koli — Personal Portfolio
+# Mayur Koli — portfolio
 
-Welcome to the official repository for my personal portfolio website, built to showcase my projects, skills, resume, and contact information.
+Source for [mayurkoli.me](https://mayurkoli.me): my work, experience, skills and contact details, plus the latest posts from my blog, [Cellwise](https://blog.mayurkoli.me).
 
-🔗 **Live Website**: [https://mayurkoli8.github.io/portfolio](https://mayurkoli.mentesa.live)
+Plain HTML, CSS and JavaScript. No build step.
 
----
+## Structure
 
-## 📌 Features
-
-- Responsive design for all screen sizes  
-- Smooth scrolling and user-friendly layout  
-- Section-wise navigation (About, Skills, Projects, Contact)  
-- Simple and clean UI  
-- Hosted via GitHub Pages  
-
----
-
-## 🛠️ Technologies Used
-
-- HTML5  
-- CSS3  
-- JavaScript  
-- GitHub Pages (for hosting)  
-
----
-
-## 🚀 Getting Started
-
-To run this project locally:
-
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/Mayurkoli8/portfolio.git
-
-
-2. **Navigate to the project directory**
-   ```bash
-   cd portfolio
-
-
-3. **Open index.html in your browser
-
-
-## 📤 Deployment
-
-This project is deployed using GitHub Pages. To redeploy:
-
---Push your latest changes to the main branch.
-
---Go to the repo's Settings → Pages.
-
---Under Branch, select main and / (root) folder.
-
---Click Save. Your site will be live at:
-
-```bash
-https://mayurkoli8.github.io/portfolio
+```
+index.html          Home page
+privacy.html        Privacy policy (served at /privacy)
+404.html            Not-found page
+assets/css/site.css Styles (light and dark themes)
+assets/js/site.js   Nav, scroll reveals, blog feed, contact form
+assets/imgs/work/   Project screenshots
+assets/og.png       Social share image
+ads.txt             AdSense seller record for mayurkoli.me and its subdomains
+robots.txt, sitemap.xml
+vercel.json         Clean URLs, redirects (/resume, /blog), headers
+.vercelignore       Repo files that are not deployed
 ```
 
-## 📇 Contact
-Feel free to connect with me for collaborations or questions:
+## Run locally
 
-💌 Email: kolimohit9595@gmail.com
+```bash
+npx serve .
+```
 
-💼 LinkedIn: linkedin.com/in/mayur-koli-484603215
+Then open http://localhost:3000.
 
-🧑‍💻 GitHub: github.com/Mayurkoli8
+## Deploy
 
+Hosted on Vercel as a static site: framework preset **Other**, no build command, output directory `.` (the repo root). Every push to `main` deploys.
 
-## 📄 License
-This project is open-source and available under the MIT License.
+`ads.txt` must stay at the root of `mayurkoli.me`. Ad crawlers check the root domain's `ads.txt` for every subdomain, including the blog.
+
+## Updating content
+
+- **Resume:** replace `Mayur Koli Resume 2026 AI Engineer.pdf`. If the file name changes, update the links in `index.html` and the `/resume` redirect in `vercel.json`.
+- **Blog posts:** the home page loads the latest five from `https://blog.mayurkoli.me/feed.xml`. The list in `index.html` is only a fallback.
+- **Contact form:** submissions go to Formspree (form `xdoqqnog`).
+
+## Contact
+
+- Email: kolimohit9595@gmail.com
+- LinkedIn: [linkedin.com/in/mayur-koli-484603215](https://www.linkedin.com/in/mayur-koli-484603215/)
+- GitHub: [github.com/Mayurkoli8](https://github.com/Mayurkoli8)

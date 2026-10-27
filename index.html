@@ -1,1521 +1,650 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Mayur Koli — AI Engineer & Full Stack Web Developer. I build intelligent, high-performance websites and AI-powered products for businesses worldwide." />
-  <meta name="keywords" content="Mayur Koli, AI Engineer, Full Stack Developer, Web Development, LLM, Generative AI, Portfolio" />
-  <meta name="author" content="Mayur Koli" />
-  <meta property="og:title" content="Mayur Koli | AI Engineer & Web Developer" />
-  <meta property="og:description" content="I build intelligent, high-performance websites and AI-powered products for businesses worldwide." />
-  <meta property="og:type" content="website" />
-  <link rel="icon" href="./assets/imgs/logo.png" type="image/png">
-  <link rel="apple-touch-icon" href="./assets/imgs/logo.png">
-  <title>Mayur Koli | AI Engineer & Full Stack Developer</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mayur Koli — AI Engineer &amp; Full-Stack Developer</title>
+  <meta name="description" content="Mayur Koli is an AI engineer and full-stack developer in Pune, India. Tech lead at SparkOS, building n8n automations, CRM and WhatsApp integrations, RAG systems, and products like FolioPort and ChatDouble.">
+  <meta name="author" content="Mayur Koli">
+  <link rel="canonical" href="https://mayurkoli.me/">
+  <meta name="google-adsense-account" content="ca-pub-6220764113163321">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <meta name="theme-color" content="#f4f2ed" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#121211" media="(prefers-color-scheme: dark)">
 
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Mayur Koli">
+  <meta property="og:url" content="https://mayurkoli.me/">
+  <meta property="og:title" content="Mayur Koli — AI Engineer & Full-Stack Developer">
+  <meta property="og:description" content="Tech lead at SparkOS. I build AI features, n8n automations and full-stack products that run in production.">
+  <meta property="og:image" content="https://mayurkoli.me/assets/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Mayur Koli, AI engineer and full-stack developer, Pune, India">
+  <meta name="twitter:card" content="summary_large_image">
 
-    :root {
-      --bg: #080808;
-      --bg2: #0f0f0f;
-      --bg3: #151515;
-      --border: rgba(255,255,255,0.07);
-      --accent: #f5a623;
-      --accent2: #ff6b35;
-      --text: #ede8e0;
-      --text-muted: #7a7570;
-      --text-dim: #b0a898;
-      --green: #4ade80;
-      --font-display: 'Syne', sans-serif;
-      --font-body: 'DM Sans', sans-serif;
-      --font-mono: 'DM Mono', monospace;
-      --radius: 6px;
-      --max-w: 1200px;
-    }
+  <link rel="icon" href="/assets/imgs/logo.png" type="image/png">
+  <link rel="apple-touch-icon" href="/assets/imgs/logo.png">
+  <link rel="alternate" type="application/rss+xml" title="Cellwise, a blog by Mayur Koli" href="https://blog.mayurkoli.me/feed.xml">
 
-    html { scroll-behavior: smooth; }
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400..700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="/assets/css/site.css">
 
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: var(--font-body);
-      font-size: 16px;
-      line-height: 1.6;
-      overflow-x: hidden;
-      cursor: none;
-    }
+  <script>document.documentElement.classList.add("js");</script>
+  <script src="/assets/js/site.js" defer></script>
 
-    /* ── CUSTOM CURSOR ── */
-    .cursor {
-      position: fixed; top: 0; left: 0; z-index: 9999;
-      pointer-events: none;
-      mix-blend-mode: difference;
-    }
-    .cursor-dot {
-      width: 8px; height: 8px; border-radius: 50%;
-      background: var(--accent);
-      transform: translate(-50%,-50%);
-      transition: transform 0.1s;
-    }
-    .cursor-ring {
-      position: fixed; top: 0; left: 0; z-index: 9998;
-      width: 36px; height: 36px; border-radius: 50%;
-      border: 1.5px solid rgba(245,166,35,0.5);
-      pointer-events: none;
-      transform: translate(-50%,-50%);
-      transition: transform 0.18s ease, width 0.2s, height 0.2s, border-color 0.2s;
-    }
-    body.hovering .cursor-ring {
-      width: 56px; height: 56px;
-      border-color: var(--accent);
-    }
-
-    /* ── NOISE OVERLAY ── */
-    body::before {
-      content: '';
-      position: fixed; inset: 0; z-index: 0; pointer-events: none;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-      opacity: 0.5;
-    }
-
-    /* ── GRID LINES ── */
-    .grid-bg {
-      position: fixed; inset: 0; z-index: 0; pointer-events: none;
-      background-image:
-        linear-gradient(to right, rgba(255,255,255,0.025) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255,255,255,0.025) 1px, transparent 1px);
-      background-size: 80px 80px;
-    }
-
-    /* ── NAV ── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      padding: 20px 40px;
-      display: flex; align-items: center; justify-content: space-between;
-      transition: background 0.3s, backdrop-filter 0.3s, border-bottom 0.3s;
-    }
-    nav.scrolled {
-      background: rgba(8,8,8,0.85);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--border);
-    }
-    .nav-logo {
-      font-family: var(--font-display);
-      font-weight: 800; font-size: 1.25rem;
-      color: var(--text);
-      text-decoration: none;
-      letter-spacing: -0.03em;
-    }
-    .nav-logo span { color: var(--accent); }
-    .nav-links { display: flex; gap: 32px; list-style: none; }
-    .nav-links a {
-      font-size: 0.85rem; font-weight: 500;
-      color: var(--text-muted); text-decoration: none;
-      letter-spacing: 0.05em; text-transform: uppercase;
-      transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--text); }
-    .nav-cta {
-      background: var(--accent);
-      color: #000; font-weight: 700; font-size: 0.85rem;
-      padding: 10px 22px; border-radius: 6px;
-      text-decoration: none; letter-spacing: 0.02em;
-      transition: opacity 0.2s, transform 0.2s;
-    }
-    .nav-cta:hover { opacity: 0.85; transform: translateY(-1px); }
-    .nav-mobile-btn { display: none; background: none; border: none; cursor: pointer; }
-    .nav-mobile-btn span {
-      display: block; width: 24px; height: 2px;
-      background: var(--text); margin: 5px 0;
-      transition: transform 0.3s, opacity 0.3s;
-    }
-
-    /* ── SECTION WRAPPER ── */
-    section { position: relative; z-index: 1; }
-    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 40px; }
-
-    /* ── HERO ── */
-    #home {
-      min-height: 100vh;
-      display: flex; align-items: center;
-      padding-top: 100px;
-      overflow: hidden;
-    }
-    .hero-inner {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 60px; align-items: center;
-      width: 100%;
-    }
-    .hero-badge {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(245,166,35,0.1);
-      border: 1px solid rgba(245,166,35,0.25);
-      border-radius: 6px; padding: 6px 16px;
-      font-size: 0.78rem; font-family: var(--font-mono);
-      color: var(--accent); letter-spacing: 0.08em;
-      text-transform: uppercase; margin-bottom: 28px;
-    }
-    .hero-badge::before {
-      content: '';
-      width: 6px; height: 6px; border-radius: 50%;
-      background: var(--green);
-      box-shadow: 0 0 8px var(--green);
-      animation: pulse 2s infinite;
-    }
-    @keyframes pulse {
-      0%,100% { opacity: 1; } 50% { opacity: 0.4; }
-    }
-    .hero-title {
-      font-family: var(--font-display);
-      font-size: clamp(2.8rem, 5vw, 4.4rem);
-      font-weight: 800; line-height: 1.05;
-      letter-spacing: -0.04em;
-      margin-bottom: 24px;
-    }
-    .hero-title em {
-      font-style: normal;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    .hero-desc {
-      font-size: 1.05rem; color: var(--text-dim);
-      line-height: 1.7; max-width: 460px; margin-bottom: 40px;
-    }
-    .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
-    .btn-primary {
-      display: inline-flex; align-items: center; gap: 10px;
-      background: var(--accent); color: #000;
-      font-weight: 700; font-size: 0.9rem;
-      padding: 14px 28px; border-radius: 6px;
-      text-decoration: none; transition: transform 0.2s, box-shadow 0.2s;
-      box-shadow: 0 0 0 0 rgba(245,166,35,0.4);
-    }
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 32px rgba(245,166,35,0.35);
-    }
-    .btn-secondary {
-      display: inline-flex; align-items: center; gap: 10px;
-      background: transparent; color: var(--text);
-      font-weight: 600; font-size: 0.9rem;
-      padding: 14px 28px; border-radius: 6px;
-      text-decoration: none; border: 1px solid var(--border);
-      transition: border-color 0.2s, background 0.2s;
-    }
-    .btn-secondary:hover {
-      border-color: rgba(255,255,255,0.2);
-      background: rgba(255,255,255,0.04);
-    }
-    .hero-stats {
-      display: flex; gap: 40px; margin-top: 52px;
-      padding-top: 36px; border-top: 1px solid var(--border);
-    }
-    .hero-stat-num {
-      font-family: var(--font-display);
-      font-size: 2rem; font-weight: 800;
-      color: var(--text); letter-spacing: -0.04em;
-    }
-    .hero-stat-num span { color: var(--accent); }
-    .hero-stat-label { font-size: 0.78rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 2px; }
-
-    /* Hero Right */
-    .hero-visual {
-      position: relative; display: flex;
-      justify-content: center; align-items: center;
-    }
-    .hero-card-stack { position: relative; width: 360px; height: 440px; }
-    .hero-card {
-      position: absolute;
-      background: var(--bg3);
-      border: 1px solid var(--border);
-      border-radius: 8px; padding: 28px;
-    }
-    .hero-card-main {
-      width: 300px; top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 3;
-      box-shadow: 0 32px 80px rgba(0,0,0,0.6);
-    }
-    .hero-card-back1 {
-      width: 260px; top: calc(50% + 20px); left: calc(50% + 24px);
-      transform: translateY(-50%) rotate(6deg);
-      z-index: 1; opacity: 0.5;
-    }
-    .hero-card-back2 {
-      width: 260px; top: calc(50% + 20px); left: calc(50% - 24px);
-      transform: translate(-100%, -50%) rotate(-5deg);
-      z-index: 1; opacity: 0.4;
-    }
-    .card-avatar {
-      width: 52px; height: 52px; border-radius: 50%;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      display: flex; align-items: center; justify-content: center;
-      font-family: var(--font-display); font-weight: 800; font-size: 1.3rem;
-      color: #000; margin-bottom: 16px;
-    }
-    .card-name {
-      font-family: var(--font-display); font-weight: 700; font-size: 1.1rem;
-      margin-bottom: 4px;
-    }
-    .card-role { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 20px; }
-    .card-tags { display: flex; gap: 8px; flex-wrap: wrap; }
-    .card-tag {
-      font-size: 0.7rem; font-family: var(--font-mono);
-      background: rgba(245,166,35,0.1); border: 1px solid rgba(245,166,35,0.2);
-      color: var(--accent); padding: 3px 10px; border-radius: 4px;
-    }
-    .card-divider { height: 1px; background: var(--border); margin: 16px 0; }
-    .card-metric { display: flex; justify-content: space-between; align-items: center; margin: 8px 0; }
-    .card-metric-label { font-size: 0.75rem; color: var(--text-muted); }
-    .card-metric-val { font-size: 0.8rem; font-weight: 600; }
-    .dot-green { color: var(--green); }
-
-    /* Floating orbs */
-    .orb {
-      position: absolute; border-radius: 50%;
-      filter: blur(120px); pointer-events: none;
-      opacity: 0.02;
-    }
-    .orb-1 {
-      width: 400px; height: 400px;
-      background: rgba(245,166,35,0.07);
-      top: -80px; right: -100px;
-    }
-    .orb-2 {
-      width: 300px; height: 300px;
-      background: rgba(255,107,53,0.05);
-      bottom: 100px; left: -80px;
-    }
-
-    /* ── MARQUEE ── */
-    .marquee-wrap {
-      overflow: hidden;
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      padding: 18px 0;
-      background: var(--bg2);
-    }
-    .marquee-track {
-      display: flex; gap: 48px; width: max-content;
-      animation: marquee 28s linear infinite;
-    }
-    .marquee-item {
-      display: flex; align-items: center; gap: 12px;
-      font-family: var(--font-display); font-size: 0.85rem;
-      font-weight: 600; letter-spacing: 0.05em;
-      color: var(--text-muted); white-space: nowrap;
-      text-transform: uppercase;
-    }
-    .marquee-dot {
-      width: 5px; height: 5px; border-radius: 50%;
-      background: var(--accent); flex-shrink: 0;
-    }
-    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-
-    /* ── SECTION HEADER ── */
-    .section-tag {
-      display: inline-flex; align-items: center; gap: 8px;
-      font-family: var(--font-mono); font-size: 0.72rem;
-      letter-spacing: 0.14em; text-transform: uppercase;
-      color: var(--accent); margin-bottom: 16px;
-    }
-    .section-tag::before {
-      content: ''; width: 20px; height: 1px; background: var(--accent);
-    }
-    .section-title {
-      font-family: var(--font-display);
-      font-size: clamp(2rem, 3.5vw, 3rem);
-      font-weight: 800; letter-spacing: -0.03em;
-      line-height: 1.1; margin-bottom: 16px;
-    }
-    .section-desc {
-      font-size: 1rem; color: var(--text-dim);
-      max-width: 500px; line-height: 1.7;
-    }
-    .section-header { margin-bottom: 64px; }
-
-    /* ── SERVICES ── */
-    #services { padding: 120px 0; }
-    .services-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-    .service-card {
-      background: var(--bg2); border: 1px solid var(--border);
-      border-radius: var(--radius); padding: 36px 32px;
-      transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
-      position: relative; overflow: hidden;
-    }
-    .service-card::before {
-      content: ''; position: absolute;
-      inset: 0; border-radius: inherit;
-      background: linear-gradient(135deg, rgba(245,166,35,0.05), transparent);
-      opacity: 0; transition: opacity 0.3s;
-    }
-    .service-card:hover { border-color: rgba(245,166,35,0.3); transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,0.4); }
-    .service-card:hover::before { opacity: 1; }
-    .service-icon {
-      width: 52px; height: 52px; border-radius: 6px;
-      background: rgba(245,166,35,0.1);
-      border: 1px solid rgba(245,166,35,0.2);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.4rem; margin-bottom: 24px;
-    }
-    .service-title {
-      font-family: var(--font-display); font-weight: 700; font-size: 1.1rem;
-      margin-bottom: 12px; letter-spacing: -0.02em;
-    }
-    .service-desc { font-size: 0.88rem; color: var(--text-dim); line-height: 1.7; margin-bottom: 20px; }
-    .service-list { list-style: none; display: flex; flex-direction: column; gap: 6px; }
-    .service-list li {
-      font-size: 0.8rem; color: var(--text-muted);
-      display: flex; align-items: center; gap: 8px;
-    }
-    .service-list li::before {
-      content: ''; width: 5px; height: 5px;
-      border-radius: 50%; background: var(--accent); flex-shrink: 0;
-    }
-    .service-number {
-      position: absolute; top: 24px; right: 24px;
-      font-family: var(--font-display); font-size: 2.5rem;
-      font-weight: 800; color: rgba(255,255,255,0.04);
-      letter-spacing: -0.05em;
-    }
-
-    /* ── ABOUT ── */
-    #about { padding: 120px 0; background: var(--bg2); }
-    .about-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 80px; align-items: start;
-    }
-    .about-text p { color: var(--text-dim); line-height: 1.8; margin-bottom: 16px; font-size: 0.95rem; }
-    .about-text strong { color: var(--text); font-weight: 600; }
-    .about-skills { margin-top: 36px; }
-    .about-skills-title { font-family: var(--font-display); font-weight: 700; font-size: 0.9rem; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); }
-    .skills-grid { display: flex; flex-wrap: wrap; gap: 8px; }
-    .skill-chip {
-      font-size: 0.78rem; font-family: var(--font-mono);
-      background: var(--bg3); border: 1px solid var(--border);
-      color: var(--text-dim); padding: 6px 14px; border-radius: 4px;
-      transition: border-color 0.2s, color 0.2s;
-    }
-    .skill-chip:hover { border-color: rgba(245,166,35,0.3); color: var(--text); }
-    .about-right { display: flex; flex-direction: column; gap: 20px; }
-    .about-stat-card {
-      background: var(--bg3); border: 1px solid var(--border);
-      border-radius: var(--radius); padding: 28px;
-      display: flex; gap: 20px; align-items: flex-start;
-      transition: border-color 0.3s;
-    }
-    .about-stat-card:hover { border-color: rgba(245,166,35,0.25); }
-    .about-stat-icon {
-      width: 44px; height: 44px; border-radius: 6px; flex-shrink: 0;
-      background: rgba(245,166,35,0.1); border: 1px solid rgba(245,166,35,0.15);
-      display: flex; align-items: center; justify-content: center; font-size: 1.2rem;
-    }
-    .about-stat-num {
-      font-family: var(--font-display); font-weight: 800; font-size: 1.8rem;
-      letter-spacing: -0.04em; line-height: 1;
-    }
-    .about-stat-num span { color: var(--accent); }
-    .about-stat-label { font-size: 0.82rem; color: var(--text-muted); margin-top: 4px; }
-
-    /* ── PROJECTS ── */
-    #projects { padding: 120px 0; }
-    .projects-grid {
-      display: grid; grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
-    }
-    .project-card {
-      background: var(--bg2); border: 1px solid var(--border);
-      border-radius: var(--radius); overflow: hidden;
-      transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
-      text-decoration: none; color: inherit; display: flex; flex-direction: column;
-    }
-    .project-card:hover { border-color: rgba(245,166,35,0.3); transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,0.4); }
-    .project-thumb {
-      height: 200px;
-      background: var(--bg3);
-      position: relative; overflow: hidden;
-      display: flex; align-items: center; justify-content: center;
-    }
-    .project-thumb-pattern {
-      position: absolute; inset: 0;
-      background-image:
-        linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
-      background-size: 32px 32px;
-    }
-    .project-thumb-icon {
-      font-size: 3rem; position: relative; z-index: 1;
-      filter: grayscale(0.2);
-    }
-    .project-type-badge {
-      position: absolute; top: 16px; right: 16px;
-      font-size: 0.68rem; font-family: var(--font-mono); letter-spacing: 0.08em;
-      text-transform: uppercase;
-      background: rgba(0,0,0,0.6); border: 1px solid var(--border);
-      padding: 4px 12px; border-radius: 4px; color: var(--text-muted);
-    }
-    .project-body { padding: 28px; flex: 1; display: flex; flex-direction: column; }
-    .project-title {
-      font-family: var(--font-display); font-weight: 700; font-size: 1.15rem;
-      letter-spacing: -0.02em; margin-bottom: 10px;
-    }
-    .project-desc { font-size: 0.86rem; color: var(--text-dim); line-height: 1.7; margin-bottom: 20px; flex: 1; }
-    .project-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 20px; }
-    .project-tag {
-      font-size: 0.7rem; font-family: var(--font-mono);
-      background: rgba(245,166,35,0.08); border: 1px solid rgba(245,166,35,0.15);
-      color: var(--accent); padding: 3px 10px; border-radius: 4px;
-    }
-    .project-link {
-      display: inline-flex; align-items: center; gap: 6px;
-      font-size: 0.82rem; font-weight: 600; color: var(--text-muted);
-      text-decoration: none; transition: color 0.2s;
-    }
-    .project-link:hover { color: var(--accent); }
-    .project-link svg { transition: transform 0.2s; }
-    .project-link:hover svg { transform: translate(2px,-2px); }
-    .project-card.featured { grid-column: 1 / -1; }
-    .project-card.featured .project-thumb { height: 260px; }
-
-    /* ── CLIENT SECTION ── */
-    #clients { padding: 120px 0; background: var(--bg2); }
-    .client-showcase {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 60px; align-items: center;
-    }
-    .client-info-label {
-      font-family: var(--font-mono); font-size: 0.7rem;
-      letter-spacing: 0.14em; text-transform: uppercase;
-      color: var(--text-muted); margin-bottom: 8px;
-    }
-    .client-name {
-      font-family: var(--font-display); font-size: 2.2rem;
-      font-weight: 800; letter-spacing: -0.04em; margin-bottom: 8px;
-    }
-    .client-location {
-      display: flex; align-items: center; gap: 8px;
-      font-size: 0.85rem; color: var(--text-muted); margin-bottom: 24px;
-    }
-    .client-desc { font-size: 0.92rem; color: var(--text-dim); line-height: 1.7; margin-bottom: 28px; }
-    .client-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 32px; }
-    .client-result-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-    .client-result {
-      background: var(--bg3); border: 1px solid var(--border);
-      border-radius: 6px; padding: 20px;
-    }
-    .client-result-num {
-      font-family: var(--font-display); font-size: 1.6rem;
-      font-weight: 800; color: var(--accent); letter-spacing: -0.03em;
-    }
-    .client-result-label { font-size: 0.75rem; color: var(--text-muted); margin-top: 4px; }
-    .client-visual {
-      background: var(--bg3); border: 1px solid var(--border);
-      border-radius: 8px; padding: 8px; overflow: hidden;
-    }
-    .client-visual-inner {
-      border-radius: 6px; overflow: hidden;
-      background: var(--bg2);
-      aspect-ratio: 4/3;
-      display: flex; align-items: center; justify-content: center;
-      position: relative;
-    }
-    .client-mockup {
-      width: 100%; height: 100%;
-      display: flex; flex-direction: column;
-      position: relative; overflow: hidden;
-    }
-    .mockup-bar {
-      height: 38px; background: rgba(255,255,255,0.04);
-      border-bottom: 1px solid var(--border);
-      display: flex; align-items: center; gap: 8px; padding: 0 16px;
-      flex-shrink: 0;
-    }
-    .mockup-dot { width: 10px; height: 10px; border-radius: 50%; }
-    .mockup-url {
-      flex: 1; height: 22px; border-radius: 4px;
-      background: rgba(255,255,255,0.06);
-      display: flex; align-items: center; padding: 0 12px;
-      font-size: 0.68rem; font-family: var(--font-mono); color: var(--text-muted);
-    }
-    .mockup-body { flex: 1; display: flex; }
-    .mockup-sidebar {
-      width: 160px; border-right: 1px solid var(--border);
-      padding: 16px; display: flex; flex-direction: column; gap: 8px; flex-shrink: 0;
-    }
-    .mockup-side-item {
-      height: 8px; border-radius: 4px;
-      background: rgba(255,255,255,0.07);
-    }
-    .mockup-main { flex: 1; padding: 20px; display: flex; flex-direction: column; gap: 12px; }
-    .mockup-hero-block {
-      height: 80px; border-radius: 8px;
-      background: linear-gradient(135deg, rgba(245,166,35,0.15), rgba(255,107,53,0.1));
-      border: 1px solid rgba(245,166,35,0.2);
-    }
-    .mockup-row { display: flex; gap: 8px; }
-    .mockup-card-sm {
-      flex: 1; height: 50px; border-radius: 6px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid var(--border);
-    }
-    .mockup-line { height: 6px; border-radius: 3px; background: rgba(255,255,255,0.06); }
-
-    /* ── PROCESS ── */
-    #process { padding: 120px 0; }
-    .process-steps { display: flex; flex-direction: column; gap: 0; }
-    .process-step {
-      display: grid; grid-template-columns: 80px 1fr;
-      gap: 0; position: relative;
-      padding-bottom: 52px;
-    }
-    .process-step:last-child { padding-bottom: 0; }
-    .process-step-left {
-      display: flex; flex-direction: column; align-items: center;
-    }
-    .process-step-num {
-      width: 52px; height: 52px; border-radius: 50%;
-      background: var(--bg3); border: 2px solid var(--border);
-      display: flex; align-items: center; justify-content: center;
-      font-family: var(--font-display); font-weight: 800; font-size: 1rem;
-      color: var(--text-muted); flex-shrink: 0;
-      transition: border-color 0.3s, color 0.3s;
-    }
-    .process-step:hover .process-step-num {
-      border-color: var(--accent); color: var(--accent);
-    }
-    .process-line {
-      width: 1px; flex: 1; margin-top: 8px;
-      background: var(--border);
-    }
-    .process-step:last-child .process-line { display: none; }
-    .process-body { padding: 12px 0 0 32px; }
-    .process-body-title {
-      font-family: var(--font-display); font-weight: 700; font-size: 1.15rem;
-      letter-spacing: -0.02em; margin-bottom: 8px;
-    }
-    .process-body-desc { font-size: 0.88rem; color: var(--text-dim); line-height: 1.7; }
-
-    /* ── TECH STACK ── */
-    #stack { padding: 80px 0; background: var(--bg2); }
-    .stack-grid {
-      display: grid; grid-template-columns: repeat(6, 1fr);
-      gap: 16px;
-    }
-    .stack-item {
-      background: var(--bg3); border: 1px solid var(--border);
-      border-radius: var(--radius); padding: 24px 16px;
-      display: flex; flex-direction: column; align-items: center; gap: 10px;
-      transition: border-color 0.2s, transform 0.2s;
-    }
-    .stack-item:hover { border-color: rgba(245,166,35,0.3); transform: translateY(-3px); }
-    .stack-icon { font-size: 1.8rem; }
-    .stack-label { font-size: 0.72rem; font-family: var(--font-mono); color: var(--text-muted); letter-spacing: 0.04em; }
-
-    /* ── CONTACT ── */
-    #contact { padding: 120px 0; }
-    .contact-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 80px; align-items: start;
-    }
-    .contact-note {
-      font-size: 0.85rem; color: var(--text-muted); margin-top: 8px;
-      display: flex; align-items: center; gap: 8px;
-    }
-    .contact-links { display: flex; flex-direction: column; gap: 16px; margin-top: 40px; }
-    .contact-link {
-      display: flex; align-items: center; gap: 14px;
-      padding: 18px 22px;
-      background: var(--bg2); border: 1px solid var(--border);
-      border-radius: var(--radius); text-decoration: none;
-      transition: border-color 0.2s, transform 0.2s;
-    }
-    .contact-link:hover { border-color: rgba(245,166,35,0.3); transform: translateX(4px); }
-    .contact-link-icon {
-      width: 40px; height: 40px; border-radius: 6px; flex-shrink: 0;
-      background: rgba(245,166,35,0.1); border: 1px solid rgba(245,166,35,0.15);
-      display: flex; align-items: center; justify-content: center; font-size: 1rem;
-    }
-    .contact-link-label { font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; }
-    .contact-link-val { font-weight: 600; font-size: 0.9rem; color: var(--text); }
-    .contact-link-arrow { margin-left: auto; color: var(--text-muted); font-size: 0.9rem; }
-
-    /* Contact Form */
-    .contact-form { display: flex; flex-direction: column; gap: 18px; }
-    .form-group { display: flex; flex-direction: column; gap: 8px; }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-    .form-label { font-size: 0.78rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; font-family: var(--font-mono); }
-    .form-input, .form-textarea, .form-select {
-      background: var(--bg2); border: 1px solid var(--border);
-      border-radius: 4px; padding: 14px 18px;
-      color: var(--text); font-family: var(--font-body); font-size: 0.9rem;
-      outline: none; transition: border-color 0.2s;
-      width: 100%;
-    }
-    .form-input:focus, .form-textarea:focus, .form-select:focus { border-color: rgba(245,166,35,0.5); }
-    .form-input::placeholder, .form-textarea::placeholder { color: var(--text-muted); }
-    .form-textarea { resize: vertical; min-height: 130px; }
-    .form-select { cursor: pointer; }
-    .form-select option { background: var(--bg2); }
-    .form-submit {
-      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
-      background: var(--accent); color: #000;
-      font-weight: 700; font-size: 0.9rem;
-      padding: 16px 32px; border-radius: 6px;
-      border: none; cursor: pointer;
-      transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
-      font-family: var(--font-body);
-    }
-    .form-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(245,166,35,0.35); }
-    #form-success {
-      display: none; padding: 16px 20px; border-radius: 6px;
-      background: rgba(74,222,128,0.1); border: 1px solid rgba(74,222,128,0.3);
-      color: var(--green); font-size: 0.88rem;
-      animation: slideIn 0.3s ease-out;
-    }
-    @keyframes slideIn {
-      from { opacity: 0; transform: translateY(-10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* ── FOOTER ── */
-    footer {
-      border-top: 1px solid var(--border);
-      background: var(--bg2); padding: 48px 0 32px;
-    }
-    .footer-inner {
-      display: flex; justify-content: space-between; align-items: center;
-      flex-wrap: wrap; gap: 24px;
-    }
-    .footer-logo {
-      font-family: var(--font-display); font-weight: 800; font-size: 1.1rem;
-      color: var(--text); text-decoration: none;
-    }
-    .footer-logo span { color: var(--accent); }
-    .footer-copy { font-size: 0.8rem; color: var(--text-muted); }
-    .footer-socials { display: flex; gap: 12px; }
-    .footer-social {
-      width: 38px; height: 38px; border-radius: 6px;
-      background: var(--bg3); border: 1px solid var(--border);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 0.95rem; text-decoration: none;
-      transition: border-color 0.2s, transform 0.2s;
-    }
-    .footer-social:hover { border-color: rgba(245,166,35,0.4); transform: translateY(-2px); }
-
-    /* ── SCROLL ANIMATIONS ── */
-    .reveal {
-      opacity: 0; transform: translateY(28px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-    .reveal-delay-1 { transition-delay: 0.1s; }
-    .reveal-delay-2 { transition-delay: 0.2s; }
-    .reveal-delay-3 { transition-delay: 0.3s; }
-    .reveal-delay-4 { transition-delay: 0.4s; }
-
-    @keyframes spin {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
-
-    /* ── MOBILE ── */
-    @media (max-width: 1024px) {
-      .services-grid { grid-template-columns: repeat(2, 1fr); }
-      .stack-grid { grid-template-columns: repeat(4, 1fr); }
-      .hero-inner { gap: 40px; }
-    }
-    @media (max-width: 768px) {
-      .container { padding: 0 20px; }
-      nav { padding: 16px 20px; }
-      .nav-links, .nav-cta { display: none; }
-      .nav-mobile-btn { display: block; cursor: pointer; }
-      .hero-inner { grid-template-columns: 1fr; }
-      .hero-visual { display: none; }
-      .hero-stats { gap: 24px; flex-wrap: wrap; }
-      .services-grid { grid-template-columns: 1fr; }
-      .about-grid, .contact-grid, .client-showcase { grid-template-columns: 1fr; gap: 40px; }
-      .projects-grid { grid-template-columns: 1fr; }
-      .project-card.featured { grid-column: auto; }
-      .stack-grid { grid-template-columns: repeat(3, 1fr); }
-      .form-row { grid-template-columns: 1fr; }
-      .footer-inner { flex-direction: column; align-items: flex-start; gap: 16px; }
-      body { cursor: auto; }
-      .cursor, .cursor-ring { display: none; }
-
-      /* ── FIX 3: Process section ── */
-      #process .container > div {
-        grid-template-columns: 1fr !important;
-        gap: 48px;
-      }
-      #process .section-header { margin-bottom: 0; }
-    }
-
-    /* ── MOBILE NAV MENU ── */
-    .mobile-menu {
-      position: fixed; inset: 0;
-      /* FIX 1: z-index must be above nav (100) so the X button is reachable */
-      z-index: 101;
-      background: var(--bg);
-      display: none; flex-direction: column;
-      align-items: center; justify-content: center;
-      gap: 36px;
-    }
-    .mobile-menu.open { display: flex; }
-    .mobile-menu a {
-      font-family: var(--font-display); font-size: 2rem; font-weight: 800;
-      color: var(--text); text-decoration: none; letter-spacing: -0.03em;
-    }
-    .mobile-menu-close {
-      position: absolute; top: 24px; right: 24px;
-      background: none; border: none; color: var(--text); font-size: 1.5rem; cursor: pointer;
-    }
-  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Mayur Koli",
+    "url": "https://mayurkoli.me/",
+    "image": "https://mayurkoli.me/assets/imgs/logo.png",
+    "jobTitle": "AI Engineer",
+    "worksFor": { "@type": "Organization", "name": "SparkOS" },
+    "address": { "@type": "PostalAddress", "addressLocality": "Pune", "addressRegion": "Maharashtra", "addressCountry": "IN" },
+    "alumniOf": { "@type": "CollegeOrUniversity", "name": "Zeal College of Engineering & Research, Savitribai Phule Pune University" },
+    "email": "mailto:kolimohit9595@gmail.com",
+    "knowsAbout": ["Generative AI", "Retrieval-augmented generation", "n8n automation", "FastAPI", "Next.js", "LangChain", "FAISS"],
+    "sameAs": [
+      "https://github.com/Mayurkoli8",
+      "https://www.linkedin.com/in/mayur-koli-484603215/",
+      "https://blog.mayurkoli.me/",
+      "https://www.instagram.com/mayur8_/"
+    ]
+  }
+  </script>
 </head>
 <body>
 
-<!-- Cursor -->
-<div class="cursor"><div class="cursor-dot"></div></div>
-<div class="cursor-ring"></div>
+<a class="skip-link" href="#main">Skip to content</a>
 
-<!-- Grid background -->
-<div class="grid-bg"></div>
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="/" aria-label="Mayur Koli, home">
+      <img src="/assets/imgs/logo.png" alt="" width="28" height="28">
+      <span>Mayur Koli</span>
+    </a>
+    <nav class="site-nav" aria-label="Primary">
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#work">Work</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="https://blog.mayurkoli.me/">Blog <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a class="nav-resume" href="/Mayur%20Koli%20Resume%202026%20AI%20Engineer.pdf">Resume (PDF)</a></li>
+      </ul>
+      <a class="btn btn-outline btn-small" href="/Mayur%20Koli%20Resume%202026%20AI%20Engineer.pdf">
+        Resume
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links">
+        <span class="nav-toggle-bars" aria-hidden="true"></span>
+        <span class="nav-toggle-text">Menu</span>
+      </button>
+    </nav>
+  </div>
+</header>
 
-<!-- Mobile Menu -->
-<div class="mobile-menu" id="mobileMenu">
-  <button class="mobile-menu-close" onclick="document.getElementById('mobileMenu').classList.remove('open')">✕</button>
-  <a href="#home" onclick="closeMobileMenu()">Home</a>
-  <a href="#services" onclick="closeMobileMenu()">Services</a>
-  <a href="#projects" onclick="closeMobileMenu()">Projects</a>
-  <a href="#clients" onclick="closeMobileMenu()">Clients</a>
-  <a href="#contact" onclick="closeMobileMenu()">Contact</a>
-</div>
+<main id="main">
 
-<!-- Nav -->
-<nav id="mainNav">
-  <a href="#home" class="nav-logo">Mayur<span>.</span></a>
-  <ul class="nav-links">
-    <li><a href="#services">Services</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#clients">Clients</a></li>
-    <li><a href="#process">Process</a></li>
-  </ul>
-  <a href="#contact" class="nav-cta">Hire Me →</a>
-  <button class="nav-mobile-btn" onclick="document.getElementById('mobileMenu').classList.add('open')">
-    <span></span><span></span><span></span>
-  </button>
-</nav>
+  <!-- Hero -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="container">
+      <p class="hero-eyebrow mono">
+        <span class="status-dot">Tech lead at SparkOS</span>
+        <span>AI engineer · Full-stack developer</span>
+        <span>Pune, India</span>
+      </p>
 
-<!-- ══ HERO ══ -->
-<section id="home">
-  <div class="orb orb-1"></div>
-  <div class="orb orb-2"></div>
-  <div class="container">
-    <div class="hero-inner">
-      <div class="hero-left">
-        <div class="hero-badge">Available for New Projects</div>
-        <h1 class="hero-title">
-          I Build Websites<br/>
-          That <em>Win Clients</em><br/>
-          &amp; Think With AI
-        </h1>
-        <p class="hero-desc">
-          AI Engineer &amp; Full Stack Developer based in India, crafting high-performance websites 
-          and intelligent products for businesses worldwide. From sleek landing pages to 
-          LLM-powered platforms.
-        </p>
-        <div class="hero-actions">
-          <a href="#contact" class="btn-primary">
-            Start a Project
-            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      <h1 class="hero-title" id="hero-title">AI products and automations, built to run <em>in production.</em></h1>
+
+      <div class="hero-grid">
+        <div>
+          <p class="hero-lead">
+            I'm Mayur Koli. At SparkOS I design n8n workflows, CRM and WhatsApp integrations, and AI features
+            for real-estate and business clients, then keep them healthy after launch. I've also built and
+            shipped three products of my own: FolioPort, Mentesa and ChatDouble.
+          </p>
+          <div class="hero-actions">
+            <div class="btn-group">
+              <a class="btn btn-primary" href="#work">
+                See selected work
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
+              </a>
+              <a class="btn btn-outline" href="/Mayur%20Koli%20Resume%202026%20AI%20Engineer.pdf">Download resume</a>
+            </div>
+            <a class="link-arrow" href="https://blog.mayurkoli.me/">
+              Read my blog
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <aside class="now-panel" aria-label="At a glance">
+          <p class="now-panel-title mono"><span>At a glance</span><span>IST, UTC+5:30</span></p>
+          <dl>
+            <div>
+              <dt class="mono">Role</dt>
+              <dd>Software Developer / AI Engineer (Tech Lead), SparkOS<small>Since Feb 2026</small></dd>
+            </div>
+            <div>
+              <dt class="mono">Focus</dt>
+              <dd>n8n automation, RAG, FastAPI, Next.js</dd>
+            </div>
+            <div>
+              <dt class="mono">Writing</dt>
+              <dd><a href="https://blog.mayurkoli.me/">Cellwise</a><small>Spreadsheet formulas in plain English</small></dd>
+            </div>
+            <div>
+              <dt class="mono">Open to</dt>
+              <dd>Freelance AI and automation projects</dd>
+            </div>
+          </dl>
+        </aside>
+      </div>
+
+      <ul class="stats" aria-label="Highlights">
+        <li class="stat">
+          <span class="stat-num">500+</span>
+          <span class="stat-label">real users on ChatDouble</span>
+        </li>
+        <li class="stat">
+          <span class="stat-num">3×</span>
+          <span class="stat-label">first prize: Innoverse 2.0 and NexAI, 2024–25</span>
+        </li>
+        <li class="stat">
+          <span class="stat-num">1</span>
+          <span class="stat-label">research paper published in IJSREM, 2025</span>
+        </li>
+        <li class="stat">
+          <span class="stat-num">8.5</span>
+          <span class="stat-label">CGPA, B.E. Computer Engineering</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 01 Work -->
+  <section class="section" id="work" aria-labelledby="work-title">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="section-label mono"><span class="num">01</span><span>Selected work</span></p>
+        <div>
+          <h2 class="section-title" id="work-title">Things I've built and <em>put in front of users.</em></h2>
+          <p class="section-intro">Three products I designed, built and deployed myself, plus a website for a client in Lesotho.</p>
+        </div>
+      </div>
+
+      <div class="projects">
+
+        <article class="project reveal" aria-labelledby="p-folioport">
+          <a class="project-media" href="https://www.folioport.live/" tabindex="-1" aria-hidden="true">
+            <div class="frame">
+              <div class="frame-bar"><span class="frame-dots"><i></i><i></i><i></i></span><span class="frame-url mono">folioport.live</span></div>
+              <img src="/assets/imgs/work/folioport.jpg" width="1280" height="800" loading="lazy" decoding="async"
+                   alt="FolioPort's resume-to-portfolio page, headlined 'Turn your resume into a portfolio website people can open', with a Build from resume button.">
+            </div>
           </a>
-          <a href="#projects" class="btn-secondary">
-            View Work
+          <div class="project-body">
+            <p class="project-meta mono"><span class="num">01</span><span>SaaS</span><span class="flag">Paying users</span></p>
+            <h3 class="project-title" id="p-folioport">FolioPort</h3>
+            <p class="project-tagline">Turns a resume into a live portfolio website.</p>
+            <p class="project-desc">I designed, built and deployed it on my own. People upload a resume, FolioPort generates the site, and they share one public link.</p>
+            <ul class="ticks">
+              <li>Backend API routes for auth, payments and portfolio generation, unit-tested before they were wired into the Next.js front end.</li>
+              <li>Public portfolio templates and the live user dashboard, built in Next.js and Tailwind CSS.</li>
+              <li>Deployed on Firebase. Bugs reported by early users get fixed and shipped through git-triggered redeploys.</li>
+            </ul>
+            <p class="stack-line mono">Next.js · Tailwind CSS · Firebase · Payments API</p>
+            <p class="project-links">
+              <a class="link-arrow" href="https://www.folioport.live/">folioport.live <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+            </p>
+          </div>
+        </article>
+
+        <article class="project reveal" aria-labelledby="p-mentesa">
+          <div class="project-media">
+            <div class="frame">
+              <div class="frame-bar"><span class="frame-dots"><i></i><i></i><i></i></span><span class="frame-url mono">mentesa · retrieval pipeline</span></div>
+              <figure class="pipeline">
+                <figcaption class="visually-hidden">How Mentesa answers a question: documents are chunked, embedded and stored in a FAISS index; a user's question retrieves the closest chunks plus conversation memory, and the Gemini API writes the reply.</figcaption>
+                <div>
+                  <span class="lane-label mono">Ingest</span>
+                  <ol class="steps">
+                    <li><b>Documents</b><span>uploaded per bot</span></li>
+                    <li><b>Chunk + embed</b><span>text to vectors</span></li>
+                    <li class="is-key"><b>FAISS index</b><span>vector store</span></li>
+                  </ol>
+                </div>
+                <div>
+                  <span class="lane-label mono">Answer</span>
+                  <ol class="steps">
+                    <li><b>Question</b><span>from the widget</span></li>
+                    <li class="is-key"><b>Retrieve</b><span>top chunks + memory</span></li>
+                    <li><b>Gemini API</b><span>persona prompt</span></li>
+                    <li><b>Reply</b><span>back to the site</span></li>
+                  </ol>
+                </div>
+                <p class="pipeline-note mono">FastAPI backend · unit-tested retrieval and memory</p>
+              </figure>
+            </div>
+          </div>
+          <div class="project-body">
+            <p class="project-meta mono"><span class="num">02</span><span>Generative AI platform</span><span class="flag">Published research</span></p>
+            <h3 class="project-title" id="p-mentesa">Mentesa</h3>
+            <p class="project-tagline">A no-code platform for building multi-bot LLM agents.</p>
+            <p class="project-desc">Businesses create bots with persistent memory that answer from their own documents, then embed them on a website without writing code. The research behind it was published in IJSREM in 2025. The chat assistant in the corner of this page is a Mentesa bot.</p>
+            <ul class="ticks">
+              <li>Backend retrieval pipeline in Python, FastAPI and FAISS, with unit tests on the core retrieval and memory components.</li>
+              <li>Multi-bot admin dashboard in Streamlit, iterated on from user feedback.</li>
+            </ul>
+            <p class="stack-line mono">Python · FastAPI · LangChain · FAISS · Gemini API · Firebase · Streamlit</p>
+            <p class="project-links">
+              <a class="link-arrow" href="https://github.com/Mayurkoli8/Mentesa">Source on GitHub <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+            </p>
+          </div>
+        </article>
+
+        <article class="project reveal" aria-labelledby="p-chatdouble">
+          <a class="project-media" href="https://chat-double.vercel.app/" tabindex="-1" aria-hidden="true">
+            <div class="frame">
+              <div class="frame-bar"><span class="frame-dots"><i></i><i></i><i></i></span><span class="frame-url mono">chat-double.vercel.app</span></div>
+              <img src="/assets/imgs/work/chatdouble.jpg" width="1280" height="800" loading="lazy" decoding="async"
+                   alt="ChatDouble's landing page, headlined 'Chat with your digital double', beside a sample conversation.">
+            </div>
+          </a>
+          <div class="project-body">
+            <p class="project-meta mono"><span class="num">03</span><span>AI chatbot</span><span class="flag">500+ users</span></p>
+            <h3 class="project-title" id="p-chatdouble">ChatDouble</h3>
+            <p class="project-tagline">An AI that texts like a specific person.</p>
+            <p class="project-desc">Upload a WhatsApp or Instagram chat and talk to a bot that mirrors that person's tone and phrasing. It uses FAISS-based contextual retrieval over the chat history and the Gemini API to respond.</p>
+            <ul class="ticks">
+              <li>Retrieval and response-generation components, unit-tested, then wired into a Streamlit front end.</li>
+              <li>Used by more than 500 real people.</li>
+            </ul>
+            <p class="stack-line mono">Python · Gemini API · FAISS · Streamlit</p>
+            <p class="project-links">
+              <a class="link-arrow" href="https://chat-double.vercel.app/">chat-double.vercel.app <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+              <a class="link-arrow" href="https://github.com/Mayurkoli8/ChatDouble">Source on GitHub <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+            </p>
+          </div>
+        </article>
+
+        <article class="project reveal" aria-labelledby="p-bakers">
+          <a class="project-media" href="https://thebakershome.gt.tc/" tabindex="-1" aria-hidden="true">
+            <div class="frame">
+              <div class="frame-bar"><span class="frame-dots"><i></i><i></i><i></i></span><span class="frame-url mono">thebakershome.gt.tc</span></div>
+              <img src="/assets/imgs/work/bakers-home.jpg" width="1280" height="800" loading="lazy" decoding="async"
+                   alt="The Baker's Home website, headlined 'Fresh. Local. Daily.', with Call Us, WhatsApp and Order Now buttons next to a photo of the bakery.">
+            </div>
+          </a>
+          <div class="project-body">
+            <p class="project-meta mono"><span class="num">04</span><span>Client website</span><span class="flag">Maseru, Lesotho</span></p>
+            <h3 class="project-title" id="p-bakers">The Baker's Home</h3>
+            <p class="project-tagline">Website for a bakery business in Lesotho.</p>
+            <p class="project-desc">A responsive site for The Baker's Home (Pty) Ltd covering their products, services and ordering, with one-tap call and WhatsApp buttons so customers can reach the shop from a phone. Designed, built and delivered remotely.</p>
+            <p class="stack-line mono">Design · Development · Responsive layout · Remote delivery</p>
+            <p class="project-links">
+              <a class="link-arrow" href="https://thebakershome.gt.tc/">thebakershome.gt.tc <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+            </p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 Experience -->
+  <section class="section" id="experience" aria-labelledby="experience-title">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="section-label mono"><span class="num">02</span><span>Experience</span></p>
+        <div>
+          <h2 class="section-title" id="experience-title">Three teams, from intern to <em>tech lead.</em></h2>
+          <p class="section-intro">Agile teams, two-week sprints, and code that has to keep working after it ships.</p>
+        </div>
+      </div>
+
+      <ol class="timeline">
+        <li class="job reveal">
+          <p class="job-when mono"><span class="is-now">Feb 2026 – Present</span></p>
+          <div>
+            <div class="job-head">
+              <h3 class="job-role">Software Developer / AI Engineer (Tech Lead)</h3>
+              <span class="job-org">SparkOS</span>
+            </div>
+            <ul class="ticks">
+              <li>Design and build backend automation workflows in n8n and AI-integrated features for real-estate and business clients, in two-week sprints with the founding team.</li>
+              <li>Debug customer-reported issues in live production systems, tracing failures through webhook logs and shipping fixes with minimal downtime.</li>
+              <li>Design, code and unit-test API integrations (GoHighLevel CRM, WhatsApp) at the component level before wiring them into client-facing workflows.</li>
+              <li>Deploy through git-based pipelines to Linux-hosted production servers and monitor stability after each release.</li>
+              <li>Work directly with stakeholders to turn business requirements into working automation logic.</li>
+            </ul>
+          </div>
+        </li>
+        <li class="job reveal">
+          <p class="job-when mono">Jan 2025 – Feb 2025</p>
+          <div>
+            <div class="job-head">
+              <h3 class="job-role">Software Intern</h3>
+              <span class="job-org">Zensar ESD</span>
+            </div>
+            <ul class="ticks">
+              <li>Designed and unit-tested Python components with database integration for enterprise application delivery, mentored by senior engineers.</li>
+              <li>Joined sprint planning and stand-ups in an Agile team to align on stakeholder requirements.</li>
+              <li>Worked with CI-driven build and test pipelines and debugged issues surfaced during integration testing.</li>
+            </ul>
+          </div>
+        </li>
+        <li class="job reveal">
+          <p class="job-when mono">Jul 2021 – Sep 2021</p>
+          <div>
+            <div class="job-head">
+              <h3 class="job-role">RPA &amp; Web Development Intern</h3>
+              <span class="job-org">Rajavi Technologies Pvt. Ltd., Pune</span>
+            </div>
+            <ul class="ticks">
+              <li>Contributed to full-stack web development and automation tasks in enterprise workflows, fixing bugs flagged during internal testing.</li>
+            </ul>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- 03 Services -->
+  <section class="section" id="services" aria-labelledby="services-title">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="section-label mono"><span class="num">03</span><span>Services</span></p>
+        <div>
+          <h2 class="section-title" id="services-title">What I can build <em>for you.</em></h2>
+          <p class="section-intro">I take on a small number of freelance projects. If you need one of these, the <a href="#contact">contact form</a> comes straight to my inbox.</p>
+        </div>
+      </div>
+
+      <div class="services">
+        <div class="service reveal">
+          <span class="service-num mono">01</span>
+          <h3>Automation workflows</h3>
+          <p>Lead capture, follow-ups, CRM updates and WhatsApp messages that run on their own, with logging so failures are easy to trace.</p>
+          <span class="mono">n8n · GoHighLevel · WhatsApp · Webhooks</span>
+        </div>
+        <div class="service reveal" style="--delay: 0.08s">
+          <span class="service-num mono">02</span>
+          <h3>AI assistants and RAG</h3>
+          <p>Chatbots and internal tools that answer from your own documents, with retrieval you can inspect and test.</p>
+          <span class="mono">LangChain · FAISS · Gemini API · Prompt engineering</span>
+        </div>
+        <div class="service reveal">
+          <span class="service-num mono">03</span>
+          <h3>Full-stack products</h3>
+          <p>From API design to the dashboard your users log into: auth, payments, admin tools and deployment.</p>
+          <span class="mono">Next.js · React · FastAPI · Node.js · Firebase</span>
+        </div>
+        <div class="service reveal" style="--delay: 0.08s">
+          <span class="service-num mono">04</span>
+          <h3>Business websites</h3>
+          <p>Fast, responsive sites for small businesses, built so customers can call, message or order from their phone.</p>
+          <span class="mono">Responsive design · SEO basics · Hosting setup</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 Skills -->
+  <section class="section" id="skills" aria-labelledby="skills-title">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="section-label mono"><span class="num">04</span><span>Skills</span></p>
+        <div>
+          <h2 class="section-title" id="skills-title">The tools I <em>ship with.</em></h2>
+        </div>
+      </div>
+
+      <dl class="skills reveal">
+        <div>
+          <dt class="mono">Backend</dt>
+          <dd><span class="chip">Python</span><span class="chip">FastAPI</span><span class="chip">Node.js</span><span class="chip">REST API design</span><span class="chip">JSON</span><span class="chip">Component-level design</span><span class="chip">Unit testing</span></dd>
+        </div>
+        <div>
+          <dt class="mono">Frontend</dt>
+          <dd><span class="chip">Next.js</span><span class="chip">React</span><span class="chip">JavaScript</span><span class="chip">Tailwind CSS</span></dd>
+        </div>
+        <div>
+          <dt class="mono">AI &amp; data</dt>
+          <dd><span class="chip">LangChain</span><span class="chip">FAISS</span><span class="chip">Gemini API</span><span class="chip">Prompt engineering</span><span class="chip">MySQL</span><span class="chip">Streamlit</span></dd>
+        </div>
+        <div>
+          <dt class="mono">Automation</dt>
+          <dd><span class="chip">n8n</span><span class="chip">GoHighLevel CRM</span><span class="chip">WhatsApp integrations</span><span class="chip">Webhooks</span></dd>
+        </div>
+        <div>
+          <dt class="mono">Cloud &amp; DevOps</dt>
+          <dd><span class="chip">Firebase</span><span class="chip">GCP</span><span class="chip">AWS</span><span class="chip">Render</span><span class="chip">Git &amp; GitHub</span><span class="chip">Linux</span><span class="chip">CI/CD pipelines</span></dd>
+        </div>
+        <div>
+          <dt class="mono">Languages</dt>
+          <dd><span class="chip">Python</span><span class="chip">Java</span><span class="chip">JavaScript</span><span class="chip">C++</span></dd>
+        </div>
+        <div>
+          <dt class="mono">Practices</dt>
+          <dd><span class="chip">Agile / Scrum</span><span class="chip">Debugging &amp; troubleshooting</span><span class="chip">Requirement analysis</span><span class="chip">Stakeholder collaboration</span></dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- 05 About -->
+  <section class="section" id="about" aria-labelledby="about-title">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="section-label mono"><span class="num">05</span><span>About</span></p>
+        <div>
+          <h2 class="section-title" id="about-title">Engineer first, <em>then everything else.</em></h2>
+        </div>
+      </div>
+
+      <div class="about-grid">
+        <div class="reveal">
+          <p class="about-quote">Most of my work happens between the requirement and the production fix: design, code, tests, deploy, then <em>debug what real users find.</em></p>
+          <div class="prose">
+            <p>I'm a Computer Engineering graduate from Savitribai Phule Pune University, and I've been shipping software in Agile teams since my first internship in 2021. I take features from requirements through component-level design, coding, unit testing and deployment.</p>
+            <p>I work across the stack: Python/FastAPI and Node.js on the back end, Next.js and React on the front end, deployed on Firebase, Render, GCP and AWS. I pick up new tools and codebases with little ramp-up time.</p>
+            <p>Outside work I write <a href="https://blog.mayurkoli.me/">Cellwise</a>, a blog that explains spreadsheet formulas in plain English.</p>
+          </div>
+        </div>
+
+        <div class="facts reveal" style="--delay: 0.08s">
+          <div>
+            <h3>Recognition</h3>
+            <ul>
+              <li><strong>1st prize, Innoverse 2.0</strong><span>National-level inter-college innovation competition, 2025, for an AI-based solution</span></li>
+              <li><strong>1st prize, NexAI Coding Competition</strong><span>Back-to-back wins in AI/ML problem-solving, 2024 and 2025</span></li>
+              <li><strong>Published research</strong><span>Mentesa, in IJSREM, 2025</span></li>
+            </ul>
+          </div>
+          <div>
+            <h3>Education</h3>
+            <ul>
+              <li><strong>B.E. Computer Engineering, CGPA 8.5 / 10</strong><span>Zeal College of Engineering &amp; Research, Savitribai Phule Pune University · 2023–2026</span></li>
+              <li><strong>Diploma in Computer Engineering, 86.06%</strong><span>Maharashtra State Board of Technical Education, Nashik · 2020–2023</span></li>
+            </ul>
+          </div>
+          <div>
+            <h3>Certifications</h3>
+            <ul>
+              <li><strong>Python Employability Skill Development Programme</strong><span>Rubicon &amp; Deutsche Bank · Mar 2025</span></li>
+              <li><strong>Machine Learning with AI using Python</strong><span>Quantum Learning · Sep 2022</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 Writing -->
+  <section class="section" id="writing" aria-labelledby="writing-title">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="section-label mono"><span class="num">06</span><span>Writing</span></p>
+        <div>
+          <h2 class="section-title" id="writing-title">I also write about <em>spreadsheets.</em></h2>
+        </div>
+      </div>
+
+      <div class="writing-grid">
+        <div class="blog-card reveal">
+          <span class="mono">blog.mayurkoli.me</span>
+          <p class="blog-name">Cellwise</p>
+          <p>Spreadsheet formulas explained in plain English, with copy-ready templates for Excel and Google Sheets. Each guide comes with a small example you can check by hand.</p>
+          <a class="btn btn-primary" href="https://blog.mayurkoli.me/">
+            Read Cellwise
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
           </a>
         </div>
-        <div class="hero-stats">
-          <div>
-            <div class="hero-stat-num">5<span>+</span></div>
-            <div class="hero-stat-label">Projects Shipped</div>
-          </div>
-          <div>
-            <div class="hero-stat-num">2<span>+</span></div>
-            <div class="hero-stat-label">Countries Served</div>
-          </div>
-          <div>
-            <div class="hero-stat-num">1<span>+</span></div>
-            <div class="hero-stat-label">Intl. Clients</div>
-          </div>
-        </div>
-      </div>
 
-      <div class="hero-visual">
-        <div class="hero-card-stack">
-          <div class="hero-card hero-card-back1"></div>
-          <div class="hero-card hero-card-back2"></div>
-          <div class="hero-card hero-card-main">
-            <div class="card-avatar"> M </div>
-            <div class="card-name">Mayur Koli</div>
-            <div class="card-role">AI Engineer · Full Stack Dev</div>
-            <div class="card-tags">
-              <span class="card-tag">LLM</span>
-              <span class="card-tag">Web</span>
-              <span class="card-tag">Python</span>
-              <span class="card-tag">AI</span>
-            </div>
-            <div class="card-divider"></div>
-            <div class="card-metric">
-              <span class="card-metric-label">Status</span>
-              <span class="card-metric-val dot-green">● Open to Work</span>
-            </div>
-            <div class="card-metric">
-              <span class="card-metric-label">Response</span>
-              <span class="card-metric-val">Within 24h</span>
-            </div>
-            <div class="card-metric">
-              <span class="card-metric-label">Timezone</span>
-              <span class="card-metric-val">IST (UTC+5:30)</span>
-            </div>
-            <div class="card-divider"></div>
-            <div class="card-metric">
-              <span class="card-metric-label">Based in</span>
-              <span class="card-metric-val">India</span>
-            </div>
-          </div>
+        <div class="reveal" style="--delay: 0.08s">
+          <ol class="posts" id="post-list" aria-label="Latest posts on Cellwise">
+            <li class="post"><a href="https://blog.mayurkoli.me/xlookup-vs-vlookup-which-to-use/">
+              <time class="mono" datetime="2026-10-27">Oct 27, 2026</time>
+              <span class="post-title">XLOOKUP vs VLOOKUP: Which Should You Use?</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+              <span class="post-desc">Use XLOOKUP if everyone who opens the file has Microsoft 365 or Excel 2021 or later. Otherwise use VLOOKUP with FALSE, or INDEX/MATCH.</span>
+            </a></li>
+            <li class="post"><a href="https://blog.mayurkoli.me/index-match-instead-of-vlookup/">
+              <time class="mono" datetime="2026-10-27">Oct 27, 2026</time>
+              <span class="post-title">How to Use INDEX and MATCH Instead of VLOOKUP</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+              <span class="post-desc">A copy-ready INDEX and MATCH formula, an argument-by-argument way to convert your existing VLOOKUP, and fixes for the errors that trip people up.</span>
+            </a></li>
+            <li class="post"><a href="https://blog.mayurkoli.me/excel-lookup-two-criteria/">
+              <time class="mono" datetime="2026-10-27">Oct 27, 2026</time>
+              <span class="post-title">How to Look Up a Value With Two Criteria in Excel</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+              <span class="post-desc">Need a value where two columns both match, like employee and month? Four working methods, from XLOOKUP to SUMIFS.</span>
+            </a></li>
+            <li class="post"><a href="https://blog.mayurkoli.me/how-to-do-a-vlookup-to-the-left/">
+              <time class="mono" datetime="2026-10-27">Oct 27, 2026</time>
+              <span class="post-title">How to Do a VLOOKUP to the Left (3 Working Methods)</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+              <span class="post-desc">VLOOKUP only returns values to the right of the column it searches. Three working ways to look left in Excel and Google Sheets.</span>
+            </a></li>
+            <li class="post"><a href="https://blog.mayurkoli.me/pull-data-from-another-sheet-google-sheets/">
+              <time class="mono" datetime="2026-10-27">Oct 27, 2026</time>
+              <span class="post-title">How to Pull Data From Another Sheet in Google Sheets</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+              <span class="post-desc">Use a simple tab reference for data in the same file and IMPORTRANGE for a different file, plus fixes for the errors you will likely see.</span>
+            </a></li>
+          </ol>
+          <p class="posts-status mono">Latest posts, pulled from the blog's RSS feed.</p>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ══ MARQUEE ══ -->
-<div class="marquee-wrap">
-  <div class="marquee-track">
-    <span class="marquee-item"><span class="marquee-dot"></span> Full Stack Web Development</span>
-    <span class="marquee-item"><span class="marquee-dot"></span> LLM-Powered Applications</span>
-    <span class="marquee-item"><span class="marquee-dot"></span> AI Product Prototyping</span>
-    <span class="marquee-item"><span class="marquee-dot"></span> International Clients</span>
-    <span class="marquee-item"><span class="marquee-dot"></span> RAG Pipelines</span>
-    <span class="marquee-item"><span class="marquee-dot"></span> Firebase &amp; Cloud Deployments</span>
-    <span class="marquee-item"><span class="marquee-dot"></span> Computer Vision</span>
-    <span class="marquee-item"><span class="marquee-dot"></span> React &amp; Python</span>
-    <span class="marquee-item"><span class="marquee-dot"></span> Full Stack Web Development</span>
-    <span class="marquee-item"><span class="marquee-dot"></span> LLM-Powered Applications</span>
-    <span class="marquee-item"><span class="marquee-dot"></span> AI Product Prototyping</span>
-    <span class="marquee-item"><span class="marquee-dot"></span> International Clients</span>
-    <span class="marquee-item"><span class="marquee-dot"></span> RAG Pipelines</span>
-    <span class="marquee-item"><span class="marquee-dot"></span> Firebase &amp; Cloud Deployments</span>
-    <span class="marquee-item"><span class="marquee-dot"></span> Computer Vision</span>
-    <span class="marquee-item"><span class="marquee-dot"></span> React &amp; Python</span>
-  </div>
-</div>
-
-<!-- ══ SERVICES ══ -->
-<section id="services">
-  <div class="container">
-    <div class="section-header reveal">
-      <div class="section-tag">What I Offer</div>
-      <h2 class="section-title">Services Designed<br/>to Grow Your Business</h2>
-      <p class="section-desc">From a landing page that converts to a full AI-powered platform — I cover the full stack, built to your goals.</p>
-    </div>
-    <div class="services-grid">
-      <div class="service-card reveal">
-        <div class="service-number">01</div>
-        <div class="service-icon" style="font-weight:600; font-size:1.2rem; letter-spacing:0.05em;"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-  <path d="M12 2L21 7V17L12 22L3 17V7L12 2Z"/>
-  <circle cx="12" cy="12" r="2"/>
-  <path d="M12 4v6M20 8l-6 3M4 8l6 3M12 14v6"/>
-</svg></div>
-        <div class="service-title">Website Development</div>
-        <div class="service-desc">Pixel-perfect, fast-loading websites built for results — whether it's a business landing page, portfolio, or e-commerce presence.</div>
-        <ul class="service-list">
-          <li>Custom design &amp; branding</li>
-          <li>Mobile-first responsive layouts</li>
-          <li>SEO-optimized structure</li>
-          <li>CMS integration (if needed)</li>
-          <li>Hosting &amp; deployment setup</li>
-        </ul>
-      </div>
-      <div class="service-card reveal reveal-delay-1">
-        <div class="service-number">02</div>
-        <div class="service-icon" style="font-weight:600; font-size:1.2rem; letter-spacing:0.05em;"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="8" r="2"/><circle cx="16" cy="14" r="2"/><circle cx="8" cy="14" r="2"/><path d="M12 10v4M16 14v3M8 14v3"/></svg></div>
-        <div class="service-title">AI-Powered Web Apps</div>
-        <div class="service-desc">Supercharge your product with AI — chatbots, intelligent search, recommendation engines, and LLM-driven workflows integrated into your site.</div>
-        <ul class="service-list">
-          <li>LLM API integration (Gemini, GPT)</li>
-          <li>RAG &amp; vector search</li>
-          <li>Custom chatbot development</li>
-          <li>AI content &amp; data processing</li>
-          <li>Streamlit &amp; Python backends</li>
-        </ul>
-      </div>
-      <div class="service-card reveal reveal-delay-2">
-        <div class="service-number">03</div>
-        <div class="service-icon" style="font-weight:600; font-size:1.2rem; letter-spacing:0.05em;"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-  <circle cx="12" cy="12" r="9"/>
-  <path d="M12 3v18M3 12h18"/>
-  <circle cx="12" cy="12" r="2"/>
-  <circle cx="7" cy="7" r="1"/>
-  <circle cx="17" cy="7" r="1"/>
-  <circle cx="7" cy="17" r="1"/>
-  <circle cx="17" cy="17" r="1"/>
-</svg></div>
-        <div class="service-title">Full Stack Products</div>
-        <div class="service-desc">End-to-end development from database to UI — I architect and ship complete web products ready for real users from day one.</div>
-        <ul class="service-list">
-          <li>React &amp; modern frontend</li>
-          <li>Firebase / Supabase backend</li>
-          <li>User auth &amp; dashboards</li>
-          <li>API design &amp; integration</li>
-          <li>Cloud deployment (GCP, Render)</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ PROJECTS ══ -->
-<section id="projects">
-  <div class="container">
-    <div class="section-header reveal" style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:24px;">
-      <div>
-        <div class="section-tag">Featured Work</div>
-        <h2 class="section-title">Projects That<br/>Prove the Point</h2>
-      </div>
-      <a href="https://github.com/Mayurkoli8?tab=repositories" target="_blank" class="btn-secondary" style="white-space:nowrap">View All on GitHub →</a>
-    </div>
-    <div class="projects-grid">
-
-      <!-- Featured -->
-      <a href="https://mentesa.live" target="_blank" class="project-card featured reveal">
-        <div class="project-thumb">
-          <div class="project-thumb-pattern"></div>
-          <div class="project-thumb-icon"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-  <circle cx="12" cy="12" r="9"/>
-  <circle cx="12" cy="7" r="2"/>
-  <circle cx="7" cy="16" r="2"/>
-  <circle cx="17" cy="16" r="2"/>
-  <path d="M12 9v4"/>
-  <path d="M12 13L7 16"/>
-  <path d="M12 13L17 16"/>
-</svg></div>
-          <span class="project-type-badge">SaaS · AI Platform</span>
-        </div>
-        <div class="project-body">
-          <div class="project-title">Mentesa — No-Code AI Chatbot Platform</div>
-          <p class="project-desc">A full SaaS platform where businesses embed custom AI chatbots on their website without writing a single line of code. Features multi-bot systems, personality prompting, vector search (FAISS), Firebase auth, and a clean admin dashboard. Built end-to-end as a real product serving live users.</p>
-          <div class="project-tags">
-            <span class="project-tag">Python</span>
-            <span class="project-tag">LangChain</span>
-            <span class="project-tag">FAISS</span>
-            <span class="project-tag">Firebase</span>
-            <span class="project-tag">Gemini API</span>
-            <span class="project-tag">Streamlit</span>
-          </div>
-          <span class="project-link">
-            Visit Live Project
-            <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M7 7h10v10"/></svg>
-          </span>
-        </div>
-      </a>
-
-      <a href="https://ChatDouble.streamlit.app" target="_blank" class="project-card reveal">
-        <div class="project-thumb">
-          <div class="project-thumb-pattern"></div>
-          <div class="project-thumb-icon"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-  <polygon points="12 2 21 7 21 17 12 22 3 17 3 7"/>
-  <circle cx="12" cy="8" r="1.5"/>
-  <circle cx="8" cy="15" r="1.5"/>
-  <circle cx="16" cy="15" r="1.5"/>
-  <path d="M12 9.5v3"/>
-  <path d="M12 12.5L8 15"/>
-  <path d="M12 12.5L16 15"/>
-</svg></div>
-          <span class="project-type-badge">AI · Chat</span>
-        </div>
-        <div class="project-body">
-          <div class="project-title">ChatDouble — AI Persona Mimicry</div>
-          <p class="project-desc">A unique AI chat app that mirrors a user's personality and communication style, creating a digital twin for conversations. Built with Streamlit and Gemini API.</p>
-          <div class="project-tags">
-            <span class="project-tag">Python</span>
-            <span class="project-tag">Gemini API</span>
-            <span class="project-tag">Streamlit</span>
-            <span class="project-tag">Persona AI</span>
-          </div>
-          <span class="project-link">
-            Open App
-            <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M7 7h10v10"/></svg>
-          </span>
-        </div>
-      </a>
-
-      <a href="https://thebakershome.gt.tc" target="_blank" class="project-card reveal reveal-delay-1">
-        <div class="project-thumb">
-          <div class="project-thumb-pattern"></div>
-          <div class="project-thumb-icon"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M7 12h10"/><circle cx="12" cy="7" r="1.5" fill="currentColor"/><circle cx="17" cy="12" r="1.5" fill="currentColor"/><circle cx="12" cy="17" r="1.5" fill="currentColor"/><circle cx="7" cy="12" r="1.5" fill="currentColor"/></svg></div>
-          <span class="project-type-badge">Client · Web Dev</span>
-        </div>
-        <div class="project-body">
-          <div class="project-title">The Bakers Home — International Client</div>
-          <p class="project-desc">Full website developed for an international bakery business client. Demonstrating ability to deliver polished, functional web presence for real-world business clients globally.</p>
-          <div class="project-tags">
-            <span class="project-tag">Client Work</span>
-            <span class="project-tag">Web Dev</span>
-            <span class="project-tag">International</span>
-          </div>
-          <span class="project-link">
-            See Client Section ↓
-          </span>
-        </div>
-      </a>
-
-    </div>
-  </div>
-</section>
-
-<!-- ══ CLIENTS ══ -->
-<section id="clients">
-  <div class="container">
-    <div class="section-header reveal">
-      <div class="section-tag">Client Work</div>
-      <h2 class="section-title">Real Businesses.<br/>Real Results.</h2>
-      <p class="section-desc">I've worked with international clients to deliver websites that represent their brand and drive their business.</p>
-    </div>
-    <div class="client-showcase">
+  <!-- 07 Contact -->
+  <section class="section" id="contact" aria-labelledby="contact-title">
+    <div class="container contact-grid">
       <div class="reveal">
-        <div class="client-info-label">International Client · Lesotho</div>
-        <div class="client-name">The Bakers Home</div>
-        <div class="client-location">
-          <span style="font-weight:600;">•</span> Lesotho · Bakery &amp; Food Business
-        </div>
-        <p class="client-desc">
-          Designed and developed a complete web presence for The Bakers Home, an international bakery brand. 
-          The project involved creating a clean, appetizing website that reflects the brand's warmth and drives customer 
-          engagement — delivered on time and with full client satisfaction.
-        </p>
-        <div class="client-tags">
-          <span class="card-tag">Website Design</span>
-          <span class="card-tag">Full Development</span>
-          <span class="card-tag">International Delivery</span>
-          <span class="card-tag">Responsive</span>
-        </div>
-        <div class="client-result-grid">
-          <div class="client-result">
-            <div class="client-result-num">100%</div>
-            <div class="client-result-label">Client Satisfaction</div>
-          </div>
-          <div class="client-result">
-            <div class="client-result-num" style="font-weight:600;">✓</div>
-            <div class="client-result-label">On-Time Delivery</div>
-          </div>
-          <div class="client-result">
-            <div class="client-result-num" style="font-weight:600; font-size:0.9rem; letter-spacing:0.05em;">WEB</div>
-            <div class="client-result-label">International Project</div>
-          </div>
-          <div class="client-result">
-            <div class="client-result-num" style="font-weight:600; font-size:0.9rem; letter-spacing:0.05em;">MOB</div>
-            <div class="client-result-label">Mobile Responsive</div>
-          </div>
-        </div>
-        <br/>
-        <a href="https://thebakershome.gt.tc/" target="_blank" class="btn-primary" style="margin-top:8px; display:inline-flex;">
-          View Live Website →
-        </a>
-      </div>
-
-      <div class="client-visual reveal reveal-delay-2">
-        <div class="client-visual-inner">
-          <div class="client-mockup">
-            <div class="mockup-bar">
-              <div class="mockup-dot" style="background:#ff5f57"></div>
-              <div class="mockup-dot" style="background:#febc2e"></div>
-              <div class="mockup-dot" style="background:#28c840"></div>
-              <div class="mockup-url">thebakershome.gt.tc</div>
-            </div>
-            <div class="mockup-body">
-              <div class="mockup-sidebar">
-                <div class="mockup-side-item" style="width:80%"></div>
-                <div class="mockup-side-item" style="width:60%"></div>
-                <div class="mockup-side-item" style="width:75%"></div>
-                <div class="mockup-side-item" style="width:50%"></div>
-                <div class="mockup-side-item" style="width:65%"></div>
-              </div>
-              <div class="mockup-main">
-                <div class="mockup-hero-block"></div>
-                <div class="mockup-row">
-                  <div class="mockup-card-sm"></div>
-                  <div class="mockup-card-sm"></div>
-                  <div class="mockup-card-sm"></div>
-                </div>
-                <div class="mockup-line" style="width:80%"></div>
-                <div class="mockup-line" style="width:60%"></div>
-                <div class="mockup-line" style="width:70%"></div>
-                <div class="mockup-row">
-                  <div class="mockup-card-sm"></div>
-                  <div class="mockup-card-sm"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ PROCESS ══ -->
-<section id="process">
-  <div class="container">
-    <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;">
-      <div class="section-header reveal" style="margin-bottom:0">
-        <div class="section-tag">How I Work</div>
-        <h2 class="section-title">From Idea to<br/>Live in Weeks</h2>
-        <p class="section-desc">A clear, no-fluff process that keeps you informed at every step — so you always know what's happening.</p>
-        <br/>
-        <a href="#contact" class="btn-primary" style="display:inline-flex; margin-top:8px;">Start the Conversation →</a>
-      </div>
-      <div class="process-steps reveal reveal-delay-1">
-        <div class="process-step">
-          <div class="process-step-left">
-            <div class="process-step-num">01</div>
-            <div class="process-line"></div>
-          </div>
-          <div class="process-body">
-            <div class="process-body-title">Discovery Call</div>
-            <p class="process-body-desc">We talk through your goals, target audience, timeline, and budget. No templates — every project starts with real understanding.</p>
-          </div>
-        </div>
-        <div class="process-step">
-          <div class="process-step-left">
-            <div class="process-step-num">02</div>
-            <div class="process-line"></div>
-          </div>
-          <div class="process-body">
-            <div class="process-body-title">Proposal &amp; Planning</div>
-            <p class="process-body-desc">You get a clear scope document: features, timeline, milestones, and pricing. No surprises. You approve before I write a single line of code.</p>
-          </div>
-        </div>
-        <div class="process-step">
-          <div class="process-step-left">
-            <div class="process-step-num">03</div>
-            <div class="process-line"></div>
-          </div>
-          <div class="process-body">
-            <div class="process-body-title">Design &amp; Development</div>
-            <p class="process-body-desc">I build iteratively with regular previews. You give feedback, I refine. Transparent progress, always.</p>
-          </div>
-        </div>
-        <div class="process-step">
-          <div class="process-step-left">
-            <div class="process-step-num">04</div>
-            <div class="process-line"></div>
-          </div>
-          <div class="process-body">
-            <div class="process-body-title">Launch &amp; Handover</div>
-            <p class="process-body-desc">Full deployment, testing, and a clean handover with documentation so you own your product completely. Post-launch support included.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ ABOUT ══ -->
-<section id="about">
-  <div class="container">
-    <div class="about-grid">
-      <div class="reveal">
-        <div class="section-tag">About Me</div>
-        <h2 class="section-title">Engineer. Builder.<br/>Problem Solver.</h2>
-        <div class="about-text">
-          <p>I'm Mayur Koli, an <strong>AI Engineer &amp; Full Stack Web Developer</strong> from India with a Computer Engineering background. I specialize in building things that work — not just look good.</p>
-          <p>My foundation is in <strong>Generative AI, LLM Agents, and Computer Vision</strong>, combined with hands-on full stack development. I've shipped real products used by real people — from AI SaaS platforms to international client websites.</p>
-          <p>What sets me apart: I understand both the <strong>tech stack and the business goal</strong>. I don't just code features — I build solutions that solve problems, attract customers, and grow businesses.</p>
-        </div>
-        <div class="about-skills">
-          <div class="about-skills-title">Tech Stack</div>
-          <div class="skills-grid">
-            <span class="skill-chip">Python</span>
-            <span class="skill-chip">JavaScript</span>
-            <span class="skill-chip">React</span>
-            <span class="skill-chip">LangChain</span>
-            <span class="skill-chip">Gemini API</span>
-            <span class="skill-chip">OpenAI API</span>
-            <span class="skill-chip">Firebase</span>
-            <span class="skill-chip">Streamlit</span>
-            <span class="skill-chip">FAISS</span>
-            <span class="skill-chip">RAG</span>
-            <span class="skill-chip">Computer Vision</span>
-            <span class="skill-chip">GCP</span>
-            <span class="skill-chip">HTML/CSS</span>
-            <span class="skill-chip">Git</span>
-          </div>
-        </div>
-        <br/>
-        <a href="https://mayurkoli.mentesa.live/Mayur Koli Resume 2026 AI Engineer.pdf" target="_blank" class="btn-secondary" style="display:inline-flex; margin-top:16px;">
-          Download Resume
-          <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M12 4v12M8 16l4 4 4-4"/><path d="M4 20h16"/></svg>
-        </a>
-      </div>
-      <div class="about-right reveal reveal-delay-1">
-        <div class="about-stat-card">
-          <div class="about-stat-icon" style="font-weight:600; font-size:0.9rem; letter-spacing:0.05em;">ENG</div>
-          <div>
-            <div class="about-stat-num">B.E.</div>
-            <div class="about-stat-label">Computer Engineering</div>
-          </div>
-        </div>
-        <div class="about-stat-card">
-          <div class="about-stat-icon" style="font-weight:600; font-size:0.9rem; letter-spacing:0.05em;">✓</div>
-          <div>
-            <div class="about-stat-num">5<span>+</span></div>
-            <div class="about-stat-label">Projects shipped and live — from SaaS platforms to client websites</div>
-          </div>
-        </div>
-        <div class="about-stat-card">
-          <div class="about-stat-icon" style="font-weight:600; font-size:0.9rem; letter-spacing:0.05em;">GL</div>
-          <div>
-            <div class="about-stat-num">Int<span>'l</span></div>
-            <div class="about-stat-label">Experience delivering projects for international clients across borders</div>
-          </div>
-        </div>
-        <div class="about-stat-card">
-          <div class="about-stat-icon" style="font-weight:600; font-size:0.9rem; letter-spacing:0.05em;">24h</div>
-          <div>
-            <div class="about-stat-num">24<span>h</span></div>
-            <div class="about-stat-label">Response time — I keep communication fast and projects moving</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ TECH STACK ══ -->
-<section id="stack">
-  <div class="container">
-    <div style="text-align:center; margin-bottom:48px;" class="reveal">
-      <div class="section-tag" style="justify-content:center">Technology</div>
-      <h2 class="section-title">Tools of the Trade</h2>
-    </div>
-    <div class="stack-grid">
-      <div class="stack-item reveal"><div class="stack-icon" style="font-weight:600; font-size:0.9rem; letter-spacing:0.05em;">PY</div><div class="stack-label">Python</div></div>
-      <div class="stack-item reveal reveal-delay-1"><div class="stack-icon" style="font-weight:600; font-size:0.9rem; letter-spacing:0.05em;">RE</div><div class="stack-label">React</div></div>
-      <div class="stack-item reveal reveal-delay-2"><div class="stack-icon" style="font-weight:600; font-size:0.9rem; letter-spacing:0.05em;">LC</div><div class="stack-label">LangChain</div></div>
-      <div class="stack-item reveal reveal-delay-3"><div class="stack-icon" style="font-weight:600; font-size:0.9rem; letter-spacing:0.05em;">FB</div><div class="stack-label">Firebase</div></div>
-      <div class="stack-item reveal reveal-delay-1"><div class="stack-icon" style="font-weight:600; font-size:0.9rem; letter-spacing:0.05em;">GM</div><div class="stack-label">Gemini</div></div>
-      <div class="stack-item reveal reveal-delay-2"><div class="stack-icon" style="font-weight:600; font-size:0.9rem; letter-spacing:0.05em;">GCP</div><div class="stack-label">GCP</div></div>
-      <div class="stack-item reveal reveal-delay-3"><div class="stack-icon" style="font-weight:600; font-size:0.9rem; letter-spacing:0.05em;">ST</div><div class="stack-label">Streamlit</div></div>
-      <div class="stack-item reveal"><div class="stack-icon" style="font-weight:600; font-size:0.9rem; letter-spacing:0.05em;">FA</div><div class="stack-label">FAISS</div></div>
-      <div class="stack-item reveal reveal-delay-1"><div class="stack-icon" style="font-weight:600; font-size:0.9rem; letter-spacing:0.05em;">CSS</div><div class="stack-label">HTML/CSS</div></div>
-      <div class="stack-item reveal reveal-delay-2"><div class="stack-icon" style="font-weight:600; font-size:0.9rem; letter-spacing:0.05em;">JS</div><div class="stack-label">JavaScript</div></div>
-      <div class="stack-item reveal reveal-delay-3"><div class="stack-icon" style="font-weight:600; font-size:0.9rem; letter-spacing:0.05em;">GH</div><div class="stack-label">GitHub</div></div>
-      <div class="stack-item reveal"><div class="stack-icon" style="font-weight:600; font-size:0.9rem; letter-spacing:0.05em;">CV</div><div class="stack-label">OpenCV</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ CONTACT ══ -->
-<section id="contact">
-  <div class="container">
-    <div class="contact-grid">
-      <div class="reveal">
-        <div class="section-tag">Get In Touch</div>
-        <h2 class="section-title">Let's Build<br/>Something Great</h2>
-        <p class="section-desc" style="margin-bottom:0">Have a project in mind? Want a new website, an AI-powered feature, or a full product? Let's talk.</p>
-        <div class="contact-note">
-          <span style="font-weight:600;">●</span> Usually responds within 24 hours
-        </div>
+        <p class="section-label mono"><span class="num">07</span><span>Contact</span></p>
+        <h2 class="contact-title" id="contact-title">Let's <em>talk.</em></h2>
+        <p class="contact-lead">Have a project, a role, or a question about something I've built? Send a message or email me directly. I usually reply within a day.</p>
         <div class="contact-links">
-          <a href="mailto:kolimohit9595@gmail.com" class="contact-link">
-            <div class="contact-link-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 14L2 4"/></svg></div>
-            <div>
-              <div class="contact-link-label">Email</div>
-              <div class="contact-link-val">kolimohit9595@gmail.com</div>
-            </div>
-            <span class="contact-link-arrow">→</span>
+          <a href="mailto:kolimohit9595@gmail.com">
+            <span class="mono">Email</span><span class="val">kolimohit9595@gmail.com</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
           </a>
-          <a href="https://github.com/Mayurkoli8" target="_blank" class="contact-link">
-            <div class="contact-link-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.016 12.016 0 0024 12c0-6.63-5.37-12-12-12z"/></svg></div>
-            <div>
-              <div class="contact-link-label">GitHub</div>
-              <div class="contact-link-val">github.com/Mayurkoli8</div>
-            </div>
-            <span class="contact-link-arrow">→</span>
+          <a href="https://www.linkedin.com/in/mayur-koli-484603215/">
+            <span class="mono">LinkedIn</span><span class="val">in/mayur-koli</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
           </a>
-          <a href="https://www.linkedin.com/in/mayur-koli-484603215/" target="_blank" class="contact-link">
-            <div class="contact-link-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.475-2.236-1.986-2.236-1.081 0-1.722.735-2.004 1.442-.103.249-.129.597-.129.946v5.417h-3.554s.05-8.787 0-9.704h3.554v1.374c.43-.664 1.199-1.608 2.918-1.608 2.131 0 3.73 1.395 3.73 4.396v5.542zM5.337 8.855c-1.144 0-1.915-.759-1.915-1.71 0-.951.77-1.71 1.944-1.71 1.175 0 1.915.759 1.915 1.71 0 .951-.74 1.71-1.944 1.71zm1.6 11.597H3.819V9.557h3.118v10.895zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.226.792 24 1.771 24h20.451C23.2 24 24 23.226 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg></div>
-            <div>
-              <div class="contact-link-label">LinkedIn</div>
-              <div class="contact-link-val">linkedin.com/in/mayur-koli</div>
-            </div>
-            <span class="contact-link-arrow">→</span>
+          <a href="https://github.com/Mayurkoli8">
+            <span class="mono">GitHub</span><span class="val">Mayurkoli8</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+          </a>
+          <a href="/Mayur%20Koli%20Resume%202026%20AI%20Engineer.pdf">
+            <span class="mono">Resume</span><span class="val">PDF, 2 pages</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>
           </a>
         </div>
       </div>
 
-      <div class="reveal reveal-delay-2">
-        <div style="background:var(--bg2); border:1px solid var(--border); border-radius:8px; padding:36px;">
-          <div style="font-family:var(--font-display); font-weight:700; font-size:1.1rem; margin-bottom:6px;">Send a Message</div>
-          <p style="font-size:0.82rem; color:var(--text-muted); margin-bottom:28px;">Tell me about your project — the more detail, the better.</p>
-          <div class="contact-form" id="contactForm">
-            <div class="form-row">
-              <div class="form-group">
-                <label class="form-label">Your Name</label>
-                <input type="text" class="form-input" placeholder="John Smith" id="fname" required />
-              </div>
-              <div class="form-group">
-                <label class="form-label">Email Address</label>
-                <input type="email" class="form-input" placeholder="john@company.com" id="femail" required />
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="form-label">Project Type</label>
-              <select class="form-select" id="ftype">
-                <option value="">Select a service...</option>
-                <option>Website Development</option>
-                <option>AI-Powered Web App</option>
-                <option>Full Stack Product</option>
-                <option>LLM Integration</option>
-                <option>Other / Not Sure</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label class="form-label">Project Details</label>
-              <textarea class="form-textarea" placeholder="Describe your project — what you need, your goals, timeline, and any technical details..." id="fmsg" required></textarea>
-            </div>
-            <div id="form-success">Message sent! I'll get back to you within 24 hours.</div>
-            <!-- FIX 2: pass event so the function can reference the button -->
-            <button class="form-submit" onclick="handleFormSubmit(event)">
-              Send Message
-              <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z"/></svg>
-            </button>
+      <form class="form reveal" id="contact-form" action="https://formspree.io/f/xdoqqnog" method="POST" novalidate style="--delay: 0.08s">
+        <div class="form-row">
+          <div class="field">
+            <label for="name">Name</label>
+            <input class="input" id="name" name="name" type="text" autocomplete="name" placeholder="Your name" required aria-describedby="name-error">
+            <p class="field-error" id="name-error" aria-live="polite"></p>
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input class="input" id="email" name="email" type="email" autocomplete="email" inputmode="email" placeholder="you@company.com" required aria-describedby="email-error">
+            <p class="field-error" id="email-error" aria-live="polite"></p>
           </div>
         </div>
-      </div>
+        <div class="field">
+          <label for="type">What's it about? <span class="opt">(optional)</span></label>
+          <select class="input" id="type" name="type">
+            <option value="">Choose one</option>
+            <option>Automation workflow or CRM integration</option>
+            <option>AI assistant or RAG feature</option>
+            <option>Full-stack product</option>
+            <option>Business website</option>
+            <option>Job opportunity</option>
+            <option>Something else</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="message">Message</label>
+          <textarea class="input" id="message" name="message" rows="5" placeholder="What you need, rough timeline, and anything technical I should know." required aria-describedby="message-error"></textarea>
+          <p class="field-error" id="message-error" aria-live="polite"></p>
+        </div>
+        <div class="hp" aria-hidden="true">
+          <label for="company-website">Leave this field empty</label>
+          <input id="company-website" type="text" name="_gotcha" tabindex="-1" autocomplete="off">
+        </div>
+        <div class="form-foot">
+          <p class="form-note">Sent through Formspree. See the <a href="/privacy">privacy page</a> for what happens to your message.</p>
+          <button class="btn btn-primary" type="submit">
+            <span class="label">Send message</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+        </div>
+        <p class="form-status" role="status" aria-live="polite"></p>
+      </form>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ══ FOOTER ══ -->
-<footer>
+</main>
+
+<footer class="site-footer">
   <div class="container">
-    <div class="footer-inner">
-      <a href="#home" class="footer-logo">Mayur<span>.</span></a>
-      <div class="footer-copy">© 2026 Mayur Koli · AI Engineer &amp; Full Stack Developer</div>
-      <div class="footer-socials">
-        <a href="https://github.com/Mayurkoli8" target="_blank" class="footer-social" title="GitHub"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.016 12.016 0 0024 12c0-6.63-5.37-12-12-12z"/></svg></a>
-        <a href="https://www.linkedin.com/in/mayur-koli-484603215/" target="_blank" class="footer-social" title="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.475-2.236-1.986-2.236-1.081 0-1.722.735-2.004 1.442-.103.249-.129.597-.129.946v5.417h-3.554s.05-8.787 0-9.704h3.554v1.374c.43-.664 1.199-1.608 2.918-1.608 2.131 0 3.73 1.395 3.73 4.396v5.542zM5.337 8.855c-1.144 0-1.915-.759-1.915-1.71 0-.951.77-1.71 1.944-1.71 1.175 0 1.915.759 1.915 1.71 0 .951-.74 1.71-1.944 1.71zm1.6 11.597H3.819V9.557h3.118v10.895zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.226.792 24 1.771 24h20.451C23.2 24 24 23.226 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg></a>
-        <a href="https://www.instagram.com/mayur8_/" target="_blank" class="footer-social" title="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112 8m4 4a4 4 0 01-8 0"/><circle cx="17.5" cy="6.5" r="1.5"/></svg></a>
+    <div class="footer-top">
+      <div class="footer-sign">
+        <a class="brand" href="/"><img src="/assets/imgs/logo.png" alt="" width="28" height="28"><span>Mayur Koli</span></a>
+        <p>AI engineer and full-stack developer in Pune, India.</p>
       </div>
+      <nav class="footer-nav" aria-label="Footer">
+        <a href="https://blog.mayurkoli.me/">Blog</a>
+        <a href="/Mayur%20Koli%20Resume%202026%20AI%20Engineer.pdf">Resume</a>
+        <a href="https://github.com/Mayurkoli8">GitHub</a>
+        <a href="https://www.linkedin.com/in/mayur-koli-484603215/">LinkedIn</a>
+        <a href="https://www.instagram.com/mayur8_/">Instagram</a>
+        <a href="/privacy">Privacy</a>
+      </nav>
+    </div>
+    <div class="footer-bottom mono">
+      <span>© 2026 Mayur Koli</span>
+      <span>mayurkoli.me</span>
     </div>
   </div>
 </footer>
 
-<script>
-  // ── CURSOR ──
-  const dot = document.querySelector('.cursor-dot');
-  const ring = document.querySelector('.cursor-ring');
-  let mx = 0, my = 0, rx = 0, ry = 0;
-  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
-  function animCursor() {
-    if (dot) { dot.style.left = mx+'px'; dot.style.top = my+'px'; }
-    rx += (mx-rx)*0.15; ry += (my-ry)*0.15;
-    if (ring) { ring.style.left = rx+'px'; ring.style.top = ry+'px'; }
-    requestAnimationFrame(animCursor);
-  }
-  animCursor();
-  document.querySelectorAll('a,button,.service-card,.project-card,.stack-item').forEach(el => {
-    el.addEventListener('mouseenter', () => document.body.classList.add('hovering'));
-    el.addEventListener('mouseleave', () => document.body.classList.remove('hovering'));
-  });
-
-  // ── STICKY NAV ──
-  const nav = document.getElementById('mainNav');
-  window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 40);
-  });
-
-  // ── SCROLL REVEAL ──
-  const revealEls = document.querySelectorAll('.reveal');
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
-  }, { threshold: 0.08 });
-  revealEls.forEach(el => io.observe(el));
-
-  // ── MOBILE MENU CLOSE ──
-  function closeMobileMenu() {
-    document.getElementById('mobileMenu').classList.remove('open');
-  }
-
-  // ── FORM SUBMIT (Formspree) ──
-  // FIX 2: accept event as a parameter so we can reliably get the button element
-  function handleFormSubmit(event) {
-    const name = document.getElementById('fname').value;
-    const email = document.getElementById('femail').value;
-    const type = document.getElementById('ftype').value;
-    const msg = document.getElementById('fmsg').value;
-    if (!name || !email || !msg) { alert('Please fill in all required fields.'); return; }
-
-    // Get the button that was clicked (works even if icon inside button was clicked)
-    const btn = event.currentTarget;
-    const originalHTML = btn.innerHTML;
-    btn.disabled = true;
-    btn.innerHTML = '<svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" style="animation:spin 1s linear infinite;"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Sending...';
-
-    const formData = new FormData();
-    formData.append('name', name);
-    formData.append('email', email);
-    formData.append('type', type);
-    formData.append('message', msg);
-
-    fetch('https://formspree.io/f/xdoqqnog', { method: 'POST', body: formData, headers: { 'Accept': 'application/json' } })
-      .then(response => {
-        if (response.ok) {
-          document.getElementById('form-success').style.display = 'block';
-          document.getElementById('fname').value = '';
-          document.getElementById('femail').value = '';
-          document.getElementById('ftype').value = '';
-          document.getElementById('fmsg').value = '';
-          btn.innerHTML = originalHTML;
-          btn.disabled = false;
-          setTimeout(() => {
-            document.getElementById('form-success').style.display = 'none';
-          }, 5000);
-        } else {
-          return response.json().then(data => { throw new Error(data.error || 'Submission failed'); });
-        }
-      })
-      .catch(err => {
-        alert('Error sending message: ' + err.message + '. Please email me directly at kolimohit9595@gmail.com');
-        btn.innerHTML = originalHTML;
-        btn.disabled = false;
-        console.error(err);
-      });
-  }
-
-  // ── HERO CARD FLOAT ──
-  const heroCard = document.querySelector('.hero-card-main');
-  if (heroCard) {
-    let t = 0;
-    function floatCard() {
-      t += 0.012;
-      heroCard.style.transform = `translate(-50%, calc(-50% + ${Math.sin(t)*8}px))`;
-      requestAnimationFrame(floatCard);
-    }
-    floatCard();
-  }
-  
-</script>
+<!-- Mentesa chat assistant -->
 <script src="https://mentesa-f92a.onrender.com/static/embed.js"
   data-api-key="mentesa_sk_uo29yXetN7SgFJ2qLwnIDinsvp7nYZGrlSqrF2gF5wQ"
   data-backend-url="https://mentesa-f92a.onrender.com"></script>

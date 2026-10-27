@@ -1,0 +1,22 @@
+# Files in the repo that should not be published on mayurkoli.me
+
+# Client chatbot prompt (contains a client's phone numbers)
+Untitled-1.md
+
+# Leftovers from the original Meyawo template and the old resume
+components.html
+Resume.pdf
+assets/scss/
+assets/css/meyawo.css
+assets/css/empty.txt
+assets/js/meyawo.js
+
+# Only the logo and project screenshots are used by the site
+assets/imgs/*
+!assets/imgs/logo.png
+!assets/imgs/work/
+
+# Repo-only files
+README.md
+CNAME
+.playwright-mcp/
