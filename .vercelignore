@@ -11,10 +11,30 @@ assets/css/meyawo.css
 assets/css/empty.txt
 assets/js/meyawo.js
 
-# Only the logo and project screenshots are used by the site
-assets/imgs/*
-!assets/imgs/logo.png
-!assets/imgs/work/
+# Unused template images. Listed by name: Vercel doesn't honour "!folder/" re-includes,
+# so a wildcard here would also drop assets/imgs/work/ (the project screenshots).
+assets/imgs/analytics.svg
+assets/imgs/avatar2.jpg
+assets/imgs/avatar3.jpg
+assets/imgs/chatdouble.png
+assets/imgs/empty.txt
+assets/imgs/folio-1.jpg
+assets/imgs/folio-2.jpg
+assets/imgs/folio-3.jpg
+assets/imgs/github_projects.png
+assets/imgs/hand-scroller.png
+assets/imgs/header.jpg
+assets/imgs/img-1.jpg
+assets/imgs/img-2.jpg
+assets/imgs/man.png
+assets/imgs/member_0.jpg
+assets/imgs/mentesa.png
+assets/imgs/pencil-case.svg
+assets/imgs/responsive.svg
+assets/imgs/scooter.svg
+assets/imgs/shipped.svg
+assets/imgs/startup.svg
+assets/imgs/toolbox.svg
 
 # Repo-only files
 README.md
